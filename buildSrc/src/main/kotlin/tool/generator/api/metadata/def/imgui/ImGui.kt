@@ -227,5 +227,11 @@ class ImGui : ApiMetadata() {
         method("GetTextLineHeightWithSpacing", resultFloat())
         method("GetFrameHeight", resultFloat())
         method("GetFrameHeightWithSpacing", resultFloat())
+
+        // ID stack/scopes
+        method("PushID") { argString("id") }
+        method("PushID") { argInt("id") }
+        method("PopID")
+        method("GetID") { argString("id") }
     }
 }
