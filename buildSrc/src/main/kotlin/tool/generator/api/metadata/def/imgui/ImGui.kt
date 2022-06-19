@@ -201,5 +201,31 @@ class ImGui : ApiMetadata() {
         }
         method("GetColorU32", resultInt()) { argImVec4("col") }
         method("GetStyleColorVec4", resultImVec4()) { argInt("idx") }
+
+        // Cursor / Layout
+        method("Separator")
+        method("SameLine") {
+            argFloat("offsetFromStart", optional = true)
+            argFloat("spacing", optional = true)
+        }
+        method("NewLine")
+        method("Spacing")
+        method("Dummy") { argImVec2("size") }
+        method("Indent") { argFloat("indentW", optional = true) }
+        method("Unindent") { argFloat("indentW", optional = true) }
+        method("BeginGroup")
+        method("EndGroup")
+        method("GetCursorPos", resultImVec2())
+        method("SetCursorPos") { argImVec2("localPos") }
+        method("SetCursorPosX") { argFloat("localX") }
+        method("SetCursorPosY") { argFloat("localY") }
+        method("GetCursorStartPos", resultImVec2())
+        method("GetCursorScreenPos", resultImVec2())
+        method("SetCursorScreenPos") { argImVec2("localPos") }
+        method("AlignTextToFramePadding")
+        method("GetTextLineHeight", resultFloat())
+        method("GetTextLineHeightWithSpacing", resultFloat())
+        method("GetFrameHeight", resultFloat())
+        method("GetFrameHeightWithSpacing", resultFloat())
     }
 }
