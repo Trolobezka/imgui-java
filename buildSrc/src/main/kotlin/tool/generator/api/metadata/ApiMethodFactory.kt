@@ -42,9 +42,9 @@ class ApiMethodFactory {
 
         if (methodDef.result == null) {
             return """
-            |    $methodMods void $methodSignCall {
-            |        $methodCallNative;
-            |    }
+            |$TAB$methodMods void $methodSignCall {
+            |$TAB$TAB$methodCallNative;
+            |$TAB}
             """.trimMargin()
         }
 
@@ -55,17 +55,17 @@ class ApiMethodFactory {
                 val staticFieldName = "_gen_${methodName}_${argGroup.size}"
 
                 return """
-                |    private static final ${methodDef.result.type} $staticFieldName = new ${methodDef.result.type}(0);
-                |    $methodSign {
-                |        ${staticFieldName}.ptr = $methodCallNative;
-                |        return ${staticFieldName};
-                |    }
+                |${TAB}private static final ${methodDef.result.type} $staticFieldName = new ${methodDef.result.type}(0);
+                |$TAB$methodSign {
+                |$TAB$TAB${staticFieldName}.ptr = $methodCallNative;
+                |${TAB}return ${staticFieldName};
+                |$TAB}
                 """.trimMargin()
             } else {
                 return """
-                |    $methodSign {
-                |        return new ${methodDef.result.type}($methodCallNative);
-                |    }
+                |$TAB$methodSign {
+                |$TAB${TAB}return new ${methodDef.result.type}($methodCallNative);
+                |$TAB}
                 """.trimMargin()
             }
         }
@@ -75,33 +75,33 @@ class ApiMethodFactory {
             val dstWithArgsInBody = "dst${if (argsInBody.isNotEmpty()) ", $argsInBody" else ""}"
 
             var methods = """
-            |    $methodSign {
-            |        final ${methodDef.result.type} dst = new ${methodDef.result.type}();
-            |        n${methodDef.name}($dstWithArgsInBody);
-            |        return dst;
-            |    }
+            |$TAB$methodSign {
+            |$TAB${TAB}final ${methodDef.result.type} dst = new ${methodDef.result.type}();
+            |$TAB${TAB}n${methodDef.name}($dstWithArgsInBody);
+            |$TAB${TAB}return dst;
+            |$TAB}
             |
-            |    $methodMods void $methodName(final ${methodDef.result.type} $dstWithArgsInSign) {
-            |        n${methodDef.name}($dstWithArgsInBody);
-            |    }
+            |$TAB$methodMods void $methodName(final ${methodDef.result.type} $dstWithArgsInSign) {
+            |$TAB${TAB}n${methodDef.name}($dstWithArgsInBody);
+            |$TAB}
             |
-            |    $methodMods float ${methodName}X($argsInSign) {
-            |        return n${methodDef.name}X($argsInBody);
-            |    }
-            |    $methodMods float ${methodName}Y($argsInSign) {
-            |        return n${methodDef.name}Y($argsInBody);
-            |    }
+            |$TAB$methodMods float ${methodName}X($argsInSign) {
+            |$TAB${TAB}return n${methodDef.name}X($argsInBody);
+            |$TAB}
+            |$TAB$methodMods float ${methodName}Y($argsInSign) {
+            |$TAB${TAB}return n${methodDef.name}Y($argsInBody);
+            |$TAB}
             """.trimMargin()
 
             if (methodDef.result is ApiResult.ImVec4) {
                 methods += """
                 |
-                |    $methodMods float ${methodName}Z($argsInSign) {
-                |       return n${methodDef.name}Z($argsInBody);
-                |    }
-                |    $methodMods float ${methodName}W($argsInSign) {
-                |       return n${methodDef.name}W($argsInBody);
-                |    }
+                |$TAB$methodMods float ${methodName}Z($argsInSign) {
+                |$TAB${TAB}return n${methodDef.name}Z($argsInBody);
+                |$TAB}
+                |$TAB$methodMods float ${methodName}W($argsInSign) {
+                |$TAB${TAB}return n${methodDef.name}W($argsInBody);
+                |$TAB}
                 """.trimMargin()
             }
 
@@ -109,9 +109,9 @@ class ApiMethodFactory {
         }
 
         return """
-        |    $methodMods ${methodDef.result.type} $methodSignCall {
-        |        return $methodCallNative;
-        |    }
+        |$TAB$methodMods ${methodDef.result.type} $methodSignCall {
+        |$TAB${TAB}return $methodCallNative;
+        |$TAB}
         """.trimMargin()
     }
 
@@ -126,17 +126,17 @@ class ApiMethodFactory {
 
         if (methodDef.result == null) {
             return """
-            |    $methodMods void $methodSignCall; /*
-            |        $methodCall;
-            |    */
+            |$TAB$methodMods void $methodSignCall; /*
+            |$TAB$TAB$methodCall;
+            |$TAB*/
             """.trimMargin()
         }
 
         if (methodDef.result is ApiResult.Struct) {
             return """
-            |    $methodMods long $methodSignCall; /*
-            |        return (intptr_t)${if (methodDef.result.isRef) "&" else ""}${methodCall};
-            |    */
+            |$TAB$methodMods long $methodSignCall; /*
+            |$TAB${TAB}return (intptr_t)${if (methodDef.result.isRef) "&" else ""}${methodCall};
+            |$TAB*/
             """.trimMargin()
         }
 
@@ -145,27 +145,27 @@ class ApiMethodFactory {
             val resultCpyMethodName = "Jni::${methodDef.result.javaClass.simpleName}Cpy"
 
             var methods = """
-            |     $methodMods void $methodName(${methodDef.result.type} $dstWithArgsInSign); /*
-            |        $resultCpyMethodName(env, $methodCall, dst);
-            |     */
+            |$TAB$methodMods void $methodName(${methodDef.result.type} $dstWithArgsInSign); /*
+            |$TAB$TAB$resultCpyMethodName(env, $methodCall, dst);
+            |$TAB*/
             |
-            |     $methodMods float ${methodName}X($argsInSign); /*
-            |        return $methodCall.x;
-            |     */
-            |     $methodMods float ${methodName}Y($argsInSign); /*
-            |        return $methodCall.y;
-            |     */
+            |$TAB$methodMods float ${methodName}X($argsInSign); /*
+            |$TAB${TAB}return $methodCall.x;
+            |$TAB*/
+            |$TAB$methodMods float ${methodName}Y($argsInSign); /*
+            |$TAB${TAB}return $methodCall.y;
+            |$TAB*/
             """.trimMargin()
 
             if (methodDef.result is ApiResult.ImVec4) {
                 methods += """
                 |
-                |    $methodMods float ${methodName}Z($argsInSign); /*
-                |        return $methodCall.z;
-                |     */
-                |     $methodMods float ${methodName}W($argsInSign); /*
-                |        return $methodCall.w;
-                |     */
+                |$TAB$methodMods float ${methodName}Z($argsInSign); /*
+                |$TAB${TAB}return $methodCall.z;
+                |$TAB*/
+                |$TAB$methodMods float ${methodName}W($argsInSign); /*
+                |$TAB${TAB}return $methodCall.w;
+                |$TAB*/
                 """.trimMargin()
             }
 
@@ -174,16 +174,16 @@ class ApiMethodFactory {
 
         if (methodDef.result is ApiResult.Str) {
             return """
-            |    $methodMods ${methodDef.result.type} $methodSignCall; /*
-            |        return env->NewStringUTF($methodCall);
-            |    */
+            |$TAB$methodMods ${methodDef.result.type} $methodSignCall; /*
+            |$TAB${TAB}return env->NewStringUTF($methodCall);
+            |$TAB*/
             """.trimMargin()
         }
 
         return """
-        |    $methodMods ${methodDef.result.type} $methodSignCall; /*
-        |        return $methodCall;
-        |    */
+        |$TAB$methodMods ${methodDef.result.type} $methodSignCall; /*
+        |$TAB${TAB}return $methodCall;
+        |$TAB*/
         """.trimMargin()
     }
 

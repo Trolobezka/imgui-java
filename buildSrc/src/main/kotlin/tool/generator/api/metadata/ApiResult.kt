@@ -4,10 +4,11 @@ abstract class ApiResult(val type: String) {
     abstract class Primitive(type: String) : ApiResult(type)
     class Bool : Primitive("boolean")
     class Float : Primitive("float")
+    class Int : Primitive("int")
 
     class Str : ApiResult("String")
 
-    class Struct(type: String, val static: Boolean = false, val isRef: Boolean = false) : ApiResult(type)
+    class Struct(type: String, val static: Boolean, val isRef: Boolean) : ApiResult(type)
 
     abstract class ImVec(type: String) : ApiResult(type)
     class ImVec2 : ImVec("imgui.ImVec2")

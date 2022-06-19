@@ -19,6 +19,14 @@ abstract class ApiMetadata {
         methods.addAll(methodFactory.create(methodDef))
     }
 
+    fun resultBool() = ApiResult.Bool()
+    fun resultFloat() = ApiResult.Float()
+    fun resultInt() = ApiResult.Int()
+    fun resultImVec2() = ApiResult.ImVec2()
+    fun resultImVec4() = ApiResult.ImVec4()
+    fun resultStruct(type: String, static: Boolean = false, isRef: Boolean = false) =
+        ApiResult.Struct(type, static, isRef)
+
     fun render(): String {
         return buildString {
             appendLine(renderMethods())
