@@ -18,8 +18,12 @@ open class ApiArg(
  * When rendered, such args only represent the native in-body side of the method.
  * They are ignored in signatures of all types.
  */
-class ApiArgDefault(default: String) : ApiArg("", "", "", false, default) {
+open class ApiArgDefault(default: String?) : ApiArg("", "", "", false, default) {
     override fun inBodyNative() = default!!
+}
+
+class ApiArgNull : ApiArgDefault(null)  {
+    override fun inBodyNative() = "NULL"
 }
 
 class ApiArgString(

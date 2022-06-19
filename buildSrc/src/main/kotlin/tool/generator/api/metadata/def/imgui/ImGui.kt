@@ -232,18 +232,91 @@ class ImGui : ApiMetadata() {
         method("PushID") { argString("id") }
         method("PushID") { argInt("id") }
         method("PopID")
-        method("GetID") { argString("id") }
+        method("GetID", resultInt()) { argString("id") }
 
         // Widgets: Text
         method("TextUnformatted") { argString("text") }
-        method("Text") { argString("text") }
+        method("Text") {
+            argString("text")
+            argNull()
+        }
         method("TextColored") {
             argImVec4("col")
             argString("text")
+            argNull()
         }
-        method("TextDisabled") { argString("text") }
-        method("TextWrapped") { argString("text") }
-        method("LabelText") { argString("text") }
-        method("BulletText") { argString("text") }
+        method("TextDisabled") {
+            argString("text")
+            argNull()
+        }
+        method("TextWrapped") {
+            argString("text")
+            argNull()
+        }
+        method("LabelText") {
+            argString("text")
+            argNull()
+        }
+        method("BulletText") {
+            argString("text")
+            argNull()
+        }
+
+        // Widgets: Main
+        method("Button", resultBoolean()) {
+            argString("label")
+            argImVec2("size", optional = true)
+        }
+        method("SmallButton", resultBoolean()) { argString("label") }
+        method("InvisibleButton", resultBoolean()) {
+            argString("id")
+            argImVec2("size")
+            argInt("flags", optional = true)
+        }
+        method("ArrowButton", resultBoolean()) {
+            argString("id")
+            argInt("dir")
+        }
+        method("Image") {
+            argIntCast("userTextureId", "(ImTextureID)(intptr_t)")
+            argImVec2("size")
+            argImVec2("uv0", optional = true)
+            argImVec2("uv1", optional = true)
+            argImVec4("tintCol", optional = true)
+            argImVec4("borderCol", optional = true)
+        }
+        method("ImageButton", resultBoolean()) {
+            argIntCast("userTextureId", "(ImTextureID)(intptr_t)")
+            argImVec2("size")
+            argImVec2("uv0", optional = true)
+            argImVec2("uv1", optional = true)
+            argFloat("framePadding", optional = true)
+            argImVec4("bgCol", optional = true)
+            argImVec4("tintCol", optional = true)
+        }
+        method("Checkbox", resultBoolean()) {
+            argString("label")
+            argBooleanPtr("v")
+        }
+        method("CheckboxFlags", resultBoolean()) {
+            argString("label")
+            argIntPtr("flags")
+            argInt("flagsValue")
+        }
+        method("RadioButton", resultBoolean()) {
+            argString("label")
+            argBoolean("active")
+        }
+        method("RadioButton", resultBoolean()) {
+            argString("label")
+            argIntPtr("v")
+            argInt("vButton")
+        }
+        method("ProgressBar") {
+            argFloat("fraction")
+            argImVec2("sizeArg", optional = true, default = "ImVec2(-FLT_MIN, 0)")
+            argString("overlay", optional = true)
+        }
+        method("Bullet")
     }
 }
