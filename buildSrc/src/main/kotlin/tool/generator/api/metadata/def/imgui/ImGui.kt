@@ -233,5 +233,17 @@ class ImGui : ApiMetadata() {
         method("PushID") { argInt("id") }
         method("PopID")
         method("GetID") { argString("id") }
+
+        // Widgets: Text
+        method("TextUnformatted") { argString("text") }
+        method("Text") { argString("text") }
+        method("TextColored") {
+            argImVec4("col")
+            argString("text")
+        }
+        method("TextDisabled") { argString("text") }
+        method("TextWrapped") { argString("text") }
+        method("LabelText") { argString("text") }
+        method("BulletText") { argString("text") }
     }
 }
