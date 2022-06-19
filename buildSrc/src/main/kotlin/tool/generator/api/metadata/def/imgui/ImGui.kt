@@ -33,10 +33,10 @@ class ImGui : ApiMetadata() {
         method("ShowMetricsWindow") { argBoolPtr("open", true) }
         method("ShowStackToolWindow") { argBoolPtr("open", true) }
         method("ShowStyleEditor") { argStruct("imgui.ImGuiStyle", "ref", true) }
-        method("ShowStyleSelector", resultBool()) { argStr("label") }
+        method("ShowStyleSelector", resultBoolean()) { argStr("label") }
         method("ShowFontSelector") { argStr("label") }
         method("ShowUserGuide")
-        method("GetVersion", ApiResult.Str())
+        method("GetVersion", resultString())
 
         // Styles
         method("StyleColorsDark") { argStruct("imgui.ImGuiStyle", "dst", true) }
@@ -44,7 +44,7 @@ class ImGui : ApiMetadata() {
         method("StyleColorsClassic") { argStruct("imgui.ImGuiStyle", "dst", true) }
 
         // Windows
-        method("Begin", resultBool()) {
+        method("Begin", resultBoolean()) {
             argStr("name")
             argBoolPtr("pOpen", true, "NULL")
             argInt("flags", true)
@@ -52,13 +52,13 @@ class ImGui : ApiMetadata() {
         method("End")
 
         // Child Windows
-        method("BeginChild", resultBool()) {
+        method("BeginChild", resultBoolean()) {
             argStr("strId")
             argImVec2("size", true, "ImVec2(0, 0)")
             argBool("border", true, "false")
             argInt("flags", true)
         }
-        method("BeginChild", resultBool()) {
+        method("BeginChild", resultBoolean()) {
             argInt("id")
             argImVec2("size", true)
             argBool("border", true)
@@ -67,10 +67,10 @@ class ImGui : ApiMetadata() {
         method("EndChild")
 
         // Windows Utilities
-        method("IsWindowAppearing", resultBool())
-        method("IsWindowCollapsed", resultBool())
-        method("IsWindowFocused", resultBool()) { argInt("flags", true) }
-        method("IsWindowHovered", resultBool()) { argInt("flags", true) }
+        method("IsWindowAppearing", resultBoolean())
+        method("IsWindowCollapsed", resultBoolean())
+        method("IsWindowFocused", resultBoolean()) { argInt("flags", true) }
+        method("IsWindowHovered", resultBoolean()) { argInt("flags", true) }
         method("GetWindowDrawList", resultStruct("imgui.ImDrawList"))
         method("GetWindowDpiScale", resultFloat())
         method("GetWindowPos", resultImVec2())
@@ -201,6 +201,6 @@ class ImGui : ApiMetadata() {
             argFloat("alphaMul")
         }
         method("GetColorU32", resultInt()) { argImVec4("col") }
-        method("GetStyleColorVec4", ApiResult.ImVec4()) { argInt("idx") }
+        method("GetStyleColorVec4", resultImVec4()) { argInt("idx") }
     }
 }

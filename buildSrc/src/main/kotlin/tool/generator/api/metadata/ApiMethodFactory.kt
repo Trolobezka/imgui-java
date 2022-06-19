@@ -50,7 +50,7 @@ class ApiMethodFactory {
 
         val methodSign = "$methodMods ${methodDef.result.type} $methodSignCall"
 
-        if (methodDef.result is ApiResult.Struct) {
+        if (methodDef.result is ApiResultStruct) {
             if (methodDef.result.static) {
                 val staticFieldName = "_gen_${methodName}_${argGroup.size}"
 
@@ -70,7 +70,7 @@ class ApiMethodFactory {
             }
         }
 
-        if (methodDef.result is ApiResult.ImVec) {
+        if (methodDef.result is ApiResultImVec) {
             val dstWithArgsInSign = "dst${if (argsInSign.isNotEmpty()) ", $argsInSign" else ""}"
             val dstWithArgsInBody = "dst${if (argsInBody.isNotEmpty()) ", $argsInBody" else ""}"
 
@@ -93,7 +93,7 @@ class ApiMethodFactory {
             |$TAB}
             """.trimMargin()
 
-            if (methodDef.result is ApiResult.ImVec4) {
+            if (methodDef.result is ApiResultImVec4) {
                 methods += """
                 |
                 |$TAB$methodMods float ${methodName}Z($argsInSign) {
@@ -132,7 +132,7 @@ class ApiMethodFactory {
             """.trimMargin()
         }
 
-        if (methodDef.result is ApiResult.Struct) {
+        if (methodDef.result is ApiResultStruct) {
             return """
             |$TAB$methodMods long $methodSignCall; /*
             |$TAB${TAB}return (intptr_t)${if (methodDef.result.isRef) "&" else ""}${methodCall};
@@ -140,7 +140,7 @@ class ApiMethodFactory {
             """.trimMargin()
         }
 
-        if (methodDef.result is ApiResult.ImVec) {
+        if (methodDef.result is ApiResultImVec) {
             val dstWithArgsInSign = "dst${if (argsInSign.isNotEmpty()) ", $argsInSign" else ""}"
             val resultCpyMethodName = "Jni::${methodDef.result.javaClass.simpleName}Cpy"
 
@@ -157,7 +157,7 @@ class ApiMethodFactory {
             |$TAB*/
             """.trimMargin()
 
-            if (methodDef.result is ApiResult.ImVec4) {
+            if (methodDef.result is ApiResultImVec4) {
                 methods += """
                 |
                 |$TAB$methodMods float ${methodName}Z($argsInSign); /*
@@ -172,7 +172,7 @@ class ApiMethodFactory {
             return methods
         }
 
-        if (methodDef.result is ApiResult.Str) {
+        if (methodDef.result is ApiResultString) {
             return """
             |$TAB$methodMods ${methodDef.result.type} $methodSignCall; /*
             |$TAB${TAB}return env->NewStringUTF($methodCall);
