@@ -17,7 +17,7 @@ class ApiMethodFactory {
         val subGroup = mutableListOf<ApiArg>()
 
         for (apiArg in argGroup.args) {
-            subGroup += if (apiArg is ApiArg.AlternateArgJava) {
+            subGroup += if (apiArg is ApiArgAlternate) {
                 apiArg.getAlternativeArgJava()
             } else {
                 apiArg
@@ -142,7 +142,7 @@ class ApiMethodFactory {
 
         if (methodDef.result is ApiResultImVec) {
             val dstWithArgsInSign = "dst${if (argsInSign.isNotEmpty()) ", $argsInSign" else ""}"
-            val resultCpyMethodName = "Jni::${methodDef.result.javaClass.simpleName}Cpy"
+            val resultCpyMethodName = "Jni::${methodDef.result.typeNative}Cpy"
 
             var methods = """
             |$TAB$methodMods void $methodName(${methodDef.result.type} $dstWithArgsInSign); /*
@@ -220,7 +220,7 @@ class ApiMethodFactory {
                     }
 
                     val argsWithDefault = argGroup.args.toMutableList()
-                    argsWithDefault[idx] = ApiArg.Default(defaultValue)
+                    argsWithDefault[idx] = ApiArgDefault(defaultValue)
                     argGroups.add(ArgGroup(argsWithDefault))
                 }
             }
@@ -234,15 +234,15 @@ class ApiMethodFactory {
             get() = args.size
 
         fun renderJavaInSignature(): String {
-            return args.filter { it !is ApiArg.Default }.joinToString(transform = ApiArg::inSignatureJava)
+            return args.filter { it !is ApiArgDefault }.joinToString(transform = ApiArg::inSignatureJava)
         }
 
         fun renderJavaInBody(): String {
-            return args.filter { it !is ApiArg.Default }.joinToString(transform = ApiArg::inBodyJava)
+            return args.filter { it !is ApiArgDefault }.joinToString(transform = ApiArg::inBodyJava)
         }
 
         fun renderNativeInSignature(): String {
-            return args.filter { it !is ApiArg.Default }.joinToString(transform = ApiArg::inSignatureNative)
+            return args.filter { it !is ApiArgDefault }.joinToString(transform = ApiArg::inSignatureNative)
         }
 
         fun renderNativeInBody(): String {

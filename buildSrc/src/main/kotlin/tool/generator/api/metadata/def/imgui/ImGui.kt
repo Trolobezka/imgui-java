@@ -1,7 +1,6 @@
 package tool.generator.api.metadata.def.imgui
 
 import tool.generator.api.metadata.ApiMetadata
-import tool.generator.api.metadata.ApiResult
 
 class ImGui : ApiMetadata() {
     init {
@@ -29,12 +28,12 @@ class ImGui : ApiMetadata() {
         method("GetDrawData", resultStruct("imgui.ImDrawData", static = true))
 
         // Demo, Debug, Information
-        method("ShowDemoWindow") { argBoolPtr("open", true) }
-        method("ShowMetricsWindow") { argBoolPtr("open", true) }
-        method("ShowStackToolWindow") { argBoolPtr("open", true) }
+        method("ShowDemoWindow") { argBooleanPtr("open", true) }
+        method("ShowMetricsWindow") { argBooleanPtr("open", true) }
+        method("ShowStackToolWindow") { argBooleanPtr("open", true) }
         method("ShowStyleEditor") { argStruct("imgui.ImGuiStyle", "ref", true) }
-        method("ShowStyleSelector", resultBoolean()) { argStr("label") }
-        method("ShowFontSelector") { argStr("label") }
+        method("ShowStyleSelector", resultBoolean()) { argString("label") }
+        method("ShowFontSelector") { argString("label") }
         method("ShowUserGuide")
         method("GetVersion", resultString())
 
@@ -45,23 +44,23 @@ class ImGui : ApiMetadata() {
 
         // Windows
         method("Begin", resultBoolean()) {
-            argStr("name")
-            argBoolPtr("pOpen", true, "NULL")
+            argString("name")
+            argBooleanPtr("pOpen", true, "NULL")
             argInt("flags", true)
         }
         method("End")
 
         // Child Windows
         method("BeginChild", resultBoolean()) {
-            argStr("strId")
+            argString("strId")
             argImVec2("size", true, "ImVec2(0, 0)")
-            argBool("border", true, "false")
+            argBoolean("border", true, "false")
             argInt("flags", true)
         }
         method("BeginChild", resultBoolean()) {
             argInt("id")
             argImVec2("size", true)
-            argBool("border", true)
+            argBoolean("border", true)
             argInt("flags", true)
         }
         method("EndChild")
@@ -95,7 +94,7 @@ class ImGui : ApiMetadata() {
         }
         method("SetNextWindowContentSize") { argImVec2("size") }
         method("SetNextWindowCollapsed") {
-            argBool("collapsed")
+            argBoolean("collapsed")
             argInt("cond", true)
         }
         method("SetNextWindowFocus")
@@ -110,28 +109,28 @@ class ImGui : ApiMetadata() {
             argInt("cond", true)
         }
         method("SetWindowCollapsed") {
-            argBool("collapsed")
+            argBoolean("collapsed")
             argInt("cond", default = "ImGuiCond_None")
         }
         method("SetWindowCollapsed") {
-            argStr("name")
-            argBool("collapsed")
+            argString("name")
+            argBoolean("collapsed")
             argInt("cond", default = "ImGuiCond_None")
         }
         method("SetWindowFocus")
         method("SetWindowFontScale") { argFloat("scale") }
         method("SetWindowPos") {
-            argStr("name")
+            argString("name")
             argImVec2("pos")
             argInt("cond", true)
         }
         method("SetWindowSize") {
-            argStr("name")
+            argString("name")
             argImVec2("size")
             argInt("cond", true)
         }
         method("SetWindowFocus") {
-            argStr("name")
+            argString("name")
         }
 
         // Content region
@@ -179,9 +178,9 @@ class ImGui : ApiMetadata() {
             argImVec2("val")
         }
         method("PopStyleVar") { argInt("count", true) }
-        method("PushAllowKeyboardFocus") { argBool("allowKeyboardFocus") }
+        method("PushAllowKeyboardFocus") { argBoolean("allowKeyboardFocus") }
         method("PopAllowKeyboardFocus")
-        method("PushButtonRepeat") { argBool("repeat") }
+        method("PushButtonRepeat") { argBoolean("repeat") }
         method("PopButtonRepeat")
 
         // Parameters stacks (current window)
