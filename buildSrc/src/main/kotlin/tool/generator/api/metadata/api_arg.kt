@@ -26,12 +26,6 @@ class ApiArgNull : ApiArgDefault(null)  {
     override fun inBodyNative() = "NULL"
 }
 
-class ApiArgString(
-    name: String,
-    optional: Boolean,
-    default: String?
-) : ApiArg("String", "String", name, optional, default)
-
 /**
  * To represent reference types.
  */

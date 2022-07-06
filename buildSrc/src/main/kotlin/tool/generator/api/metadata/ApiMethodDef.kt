@@ -17,7 +17,7 @@ class ApiMethodDef(
     }
 
     fun argString(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArgString(name, optional, default)
+        args += ApiArg("String", "String", name, optional, default)
     }
 
     fun argInt(name: String, optional: Boolean = false, default: String? = null) {
