@@ -318,5 +318,19 @@ class ImGui : ApiMetadata() {
             argString("overlay", optional = true)
         }
         method("Bullet")
+
+        // Widgets: Combo Box
+        method("BeginCombo", resultBoolean()) {
+            argString("label")
+            argString("previewValue")
+            argInt("flags", optional = true)
+        }
+        method("EndCombo")
+        method("Combo", resultBoolean()) {
+            argString("label")
+            argIntPtr("currentItem")
+            argString("itemsSeparatedByZeros")
+            argInt("popupMaxHeightInItems", optional = true)
+        }
     }
 }

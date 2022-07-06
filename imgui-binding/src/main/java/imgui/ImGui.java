@@ -161,30 +161,11 @@ public class ImGui {
         return ImGui::Checkbox(label, &flag);
     */
 
-    // Widgets: Combo Box
-    // - The BeginCombo()/EndCombo() api allows you to manage your contents and selection state however you want it, by creating e.g. Selectable() items.
-    // - The old Combo() api are helpers over BeginCombo()/EndCombo() which are kept available for convenience purpose.
-
-    public static native boolean beginCombo(String label, String previewValue); /*
-        return ImGui::BeginCombo(label, previewValue);
-     */
-
-    public static native boolean beginCombo(String label, String previewValue, int imGuiComboFlags); /*
-        return ImGui::BeginCombo(label, previewValue, imGuiComboFlags);
-    */
-
-    /**
-     * Only call EndCombo() if BeginCombo() returns true!
-     */
-    public static native void endCombo(); /*
-        ImGui::EndCombo();
-    */
-
-    public static boolean combo(String label, ImInt currentItem, String[] items) {
+    public static boolean combo(final String label, final ImInt currentItem, final String[] items) {
         return nCombo(label, currentItem.getData(), items, items.length, -1);
     }
 
-    public static boolean combo(String label, ImInt currentItem, String[] items, int popupMaxHeightInItems) {
+    public static boolean combo(final String label, final ImInt currentItem, final String[] items, final int popupMaxHeightInItems) {
         return nCombo(label, currentItem.getData(), items, items.length, popupMaxHeightInItems);
     }
 
@@ -205,21 +186,6 @@ public class ImGui {
         }
 
         return flag;
-    */
-
-    /**
-     * Separate items with \0 within a string, end item-list with \0\0. e.g. "One\0Two\0Three\0"
-     */
-    public static boolean combo(String label, ImInt currentItem, String itemsSeparatedByZeros) {
-        return nCombo(label, currentItem.getData(), itemsSeparatedByZeros, -1);
-    }
-
-    public static boolean combo(String label, ImInt currentItem, String itemsSeparatedByZeros, int popupMaxHeightInItems) {
-        return nCombo(label, currentItem.getData(), itemsSeparatedByZeros, popupMaxHeightInItems);
-    }
-
-    private static native boolean nCombo(String label, int[] currentItem, String itemsSeparatedByZeros, int popupMaxHeightInItems); /*
-        return ImGui::Combo(label, &currentItem[0], itemsSeparatedByZeros, popupMaxHeightInItems);
     */
 
     // Widgets: Drag Sliders
