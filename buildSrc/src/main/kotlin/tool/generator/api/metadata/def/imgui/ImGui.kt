@@ -841,5 +841,32 @@ class ImGui : ApiMetadata() {
         method("SetColorEditOptions") {
             argInt("flags")
         }
+
+        // Widgets: Trees
+        method("TreeNode", resultBoolean()) {
+            argString("label")
+        }
+        method("TreeNodeEx", resultBoolean()) {
+            argString("label")
+            argInt("flags", optional = true)
+        }
+        method("TreePush") {
+            argString("strId", default = "NULL")
+        }
+        method("TreePop")
+        method("GetTreeNodeToLabelSpacing", resultFloat())
+        method("CollapsingHeader", resultBoolean()) {
+            argString("label")
+            argInt("flags", optional = true)
+        }
+        method("CollapsingHeader", resultBoolean()) {
+            argString("label")
+            argBooleanPtr("pVisible")
+            argInt("flags", optional = true)
+        }
+        method("SetNextItemOpen") {
+            argBoolean("isOpen")
+            argInt("cont", optional = true)
+        }
     }
 }
