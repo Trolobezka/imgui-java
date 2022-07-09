@@ -97,6 +97,7 @@ class ApiMethodDef(
     fun argDoubleArr(name: String, optional: Boolean = false, default: String? = null) {
         args += ApiArgArray("double", "double", name, optional, default)
     }
+
     fun argLong(name: String, optional: Boolean = false, default: String? = null) {
         args += argLongRaw(name, optional, default)
     }

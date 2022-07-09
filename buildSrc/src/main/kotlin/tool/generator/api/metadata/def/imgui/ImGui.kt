@@ -809,5 +809,37 @@ class ImGui : ApiMetadata() {
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
+
+        // Widgets: Color Editor/Picker
+        method("ColorEdit3", resultBoolean()) {
+            argString("label")
+            argFloatArr("col")
+            argInt("flags", optional = true)
+        }
+        method("ColorEdit4", resultBoolean()) {
+            argString("label")
+            argFloatArr("col")
+            argInt("flags", optional = true)
+        }
+        method("ColorPicker3", resultBoolean()) {
+            argString("label")
+            argFloatArr("col")
+            argInt("flags", optional = true)
+        }
+        method("ColorPicker4", resultBoolean()) {
+            argString("label")
+            argFloatArr("col")
+            argInt("flags", optional = true)
+            argFloatPtr("refCol", optional = true)
+        }
+        method("ColorButton", resultBoolean()) {
+            argString("descId")
+            argImVec4("col")
+            argInt("flags", default = "ImGuiColorEditFlags_None")
+            argImVec2("size", optional = true)
+        }
+        method("SetColorEditOptions") {
+            argInt("flags")
+        }
     }
 }
