@@ -955,5 +955,13 @@ class ImGui : ApiMetadata() {
             argBooleanPtr("selected")
             argBoolean("enabled", optional = true)
         }
+
+        // Tooltips
+        method("BeginTooltip")
+        method("EndTooltip")
+        method("SetTooltip") {
+            argString("tooltip")
+            argNull()
+        }
     }
 }

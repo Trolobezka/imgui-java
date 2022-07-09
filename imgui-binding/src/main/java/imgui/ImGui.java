@@ -362,27 +362,6 @@ public class ImGui {
         return flag;
     */
 
-    // Tooltips
-    // - Tooltip are windows following the mouse. They do not take focus away.
-
-    /**
-     * Begin/append a tooltip window. to create full-featured tooltip (with any kind of items).
-     */
-    public static native void beginTooltip(); /*
-        ImGui::BeginTooltip();
-    */
-
-    public static native void endTooltip(); /*
-        ImGui::EndTooltip();
-    */
-
-    /**
-     * Set a text-only tooltip, typically use with ImGui::IsItemHovered(). override any previous call to SetTooltip().
-     */
-    public static native void setTooltip(String text); /*
-        ImGui::SetTooltip(text, NULL);
-    */
-
     // Popups, Modals
     //  - They block normal mouse hovering detection (and therefore most mouse interactions) behind them.
     //  - If not modal: they can be closed by clicking anywhere outside them, or by pressing ESCAPE.
