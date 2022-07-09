@@ -20,9 +20,9 @@ class ApiMethodDef(
         args += ApiArgDefault(default)
     }
 
-    fun argCast(arg: ApiArg, cast: String) {
+    fun argPrefix(arg: ApiArg, prefix: String) {
         args += object : ApiArg(arg.typeJava, arg.typeNative, arg.name, arg.optional, arg.default) {
-            override fun inBodyNative() = "$cast${arg.name}"
+            override fun inBodyNative() = "$prefix${arg.name}"
         }
     }
 
@@ -31,7 +31,11 @@ class ApiMethodDef(
     }
 
     fun argBoolean(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArg("boolean", "boolean", name, optional, default)
+        args += argBooleanRaw(name, optional, default)
+    }
+
+    fun argBooleanRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("boolean", "boolean", name, optional, default)
     }
 
     fun argBooleanPtr(name: String, optional: Boolean = false, default: String? = null) {

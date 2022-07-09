@@ -278,7 +278,7 @@ class ImGui : ApiMetadata() {
             argInt("dir")
         }
         method("Image") {
-            argCast(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
+            argPrefix(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
             argImVec2("size")
             argImVec2("uv0", optional = true)
             argImVec2("uv1", optional = true)
@@ -286,7 +286,7 @@ class ImGui : ApiMetadata() {
             argImVec4("borderCol", optional = true)
         }
         method("ImageButton", resultBoolean()) {
-            argCast(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
+            argPrefix(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
             argImVec2("size")
             argImVec2("uv0", optional = true)
             argImVec2("uv1", optional = true)
@@ -473,8 +473,8 @@ class ImGui : ApiMetadata() {
             argDefault("ImGuiDataType_Float")
             argFloatPtr("pData")
             argFloat("vSpeed", optional = true)
-            argCast(argFloatRaw("pMin", optional = true), "&")
-            argCast(argFloatRaw("pMax", optional = true), "&")
+            argPrefix(argFloatRaw("pMin", optional = true), "&")
+            argPrefix(argFloatRaw("pMax", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -483,8 +483,8 @@ class ImGui : ApiMetadata() {
             argDefault("ImGuiDataType_S16")
             argShortPtr("pData")
             argFloat("vSpeed", optional = true)
-            argCast(argShortRaw("pMin", optional = true), "&")
-            argCast(argShortRaw("pMax", optional = true), "&")
+            argPrefix(argShortRaw("pMin", optional = true), "&")
+            argPrefix(argShortRaw("pMax", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -493,8 +493,8 @@ class ImGui : ApiMetadata() {
             argDefault("ImGuiDataType_S32")
             argIntPtr("pData")
             argFloat("vSpeed", optional = true)
-            argCast(argIntRaw("pMin", optional = true), "&")
-            argCast(argIntRaw("pMax", optional = true), "&")
+            argPrefix(argIntRaw("pMin", optional = true), "&")
+            argPrefix(argIntRaw("pMax", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -503,8 +503,8 @@ class ImGui : ApiMetadata() {
             argDefault("ImGuiDataType_S64")
             argLongPtr("pData")
             argFloat("vSpeed", optional = true)
-            argCast(argLongRaw("pMin", optional = true), "&")
-            argCast(argLongRaw("pMax", optional = true), "&")
+            argPrefix(argLongRaw("pMin", optional = true), "&")
+            argPrefix(argLongRaw("pMax", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -602,8 +602,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_Float")
             argFloatPtr("pData")
-            argCast(argFloatRaw("pMin"), "&")
-            argCast(argFloatRaw("pMax"), "&")
+            argPrefix(argFloatRaw("pMin"), "&")
+            argPrefix(argFloatRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -611,8 +611,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S16")
             argShortPtr("pData")
-            argCast(argShortRaw("pMin"), "&")
-            argCast(argShortRaw("pMax"), "&")
+            argPrefix(argShortRaw("pMin"), "&")
+            argPrefix(argShortRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -620,8 +620,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S32")
             argIntPtr("pData")
-            argCast(argIntRaw("pMin"), "&")
-            argCast(argIntRaw("pMax"), "&")
+            argPrefix(argIntRaw("pMin"), "&")
+            argPrefix(argIntRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -629,8 +629,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S64")
             argLongPtr("pData")
-            argCast(argLongRaw("pMin"), "&")
-            argCast(argLongRaw("pMax"), "&")
+            argPrefix(argLongRaw("pMin"), "&")
+            argPrefix(argLongRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -657,8 +657,8 @@ class ImGui : ApiMetadata() {
             argImVec2("size")
             argDefault("ImGuiDataType_Float")
             argFloatPtr("pData")
-            argCast(argFloatRaw("pMin"), "&")
-            argCast(argFloatRaw("pMax"), "&")
+            argPrefix(argFloatRaw("pMin"), "&")
+            argPrefix(argFloatRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -667,8 +667,8 @@ class ImGui : ApiMetadata() {
             argImVec2("size")
             argDefault("ImGuiDataType_S16")
             argShortPtr("pData")
-            argCast(argFloatRaw("pMin"), "&")
-            argCast(argFloatRaw("pMax"), "&")
+            argPrefix(argFloatRaw("pMin"), "&")
+            argPrefix(argFloatRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -677,8 +677,8 @@ class ImGui : ApiMetadata() {
             argImVec2("size")
             argDefault("ImGuiDataType_S32")
             argIntPtr("pData")
-            argCast(argFloatRaw("pMin"), "&")
-            argCast(argFloatRaw("pMax"), "&")
+            argPrefix(argFloatRaw("pMin"), "&")
+            argPrefix(argFloatRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -687,8 +687,8 @@ class ImGui : ApiMetadata() {
             argImVec2("size")
             argDefault("ImGuiDataType_S64")
             argLongPtr("pData")
-            argCast(argFloatRaw("pMin"), "&")
-            argCast(argFloatRaw("pMax"), "&")
+            argPrefix(argFloatRaw("pMin"), "&")
+            argPrefix(argFloatRaw("pMax"), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -777,8 +777,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_Float")
             argFloatPtr("pData")
-            argCast(argFloatRaw("pStep", optional = true), "&")
-            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argPrefix(argFloatRaw("pStep", optional = true), "&")
+            argPrefix(argFloatRaw("pStepFast", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -786,8 +786,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S16")
             argShortPtr("pData")
-            argCast(argFloatRaw("pStep", optional = true), "&")
-            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argPrefix(argFloatRaw("pStep", optional = true), "&")
+            argPrefix(argFloatRaw("pStepFast", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -795,8 +795,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S32")
             argIntPtr("pData")
-            argCast(argFloatRaw("pStep", optional = true), "&")
-            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argPrefix(argFloatRaw("pStep", optional = true), "&")
+            argPrefix(argFloatRaw("pStepFast", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -804,8 +804,8 @@ class ImGui : ApiMetadata() {
             argString("label")
             argDefault("ImGuiDataType_S64")
             argLongPtr("pData")
-            argCast(argFloatRaw("pStep", optional = true), "&")
-            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argPrefix(argFloatRaw("pStep", optional = true), "&")
+            argPrefix(argFloatRaw("pStepFast", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
@@ -912,6 +912,25 @@ class ImGui : ApiMetadata() {
             argFloat("scaleMax", optional = true)
             argImVec2("graphSize", default = "ImVec2(0, 0)")
             argInt("stride", optional = true)
+        }
+
+        // Widgets: Value() Helpers.
+        method("Value") {
+            argString("prefix")
+            argPrefix(argBooleanRaw("value"), "(bool)")
+        }
+        method("Value") {
+            argString("prefix")
+            argPrefix(argIntRaw("value"), "(int)")
+        }
+        method("Value") {
+            argString("prefix")
+            argPrefix(argLongRaw("value"), "(unsigned int)")
+        }
+        method("Value") {
+            argString("prefix")
+            argPrefix(argFloatRaw("value"), "(float)")
+            argString("floatFormat", optional = true)
         }
     }
 }

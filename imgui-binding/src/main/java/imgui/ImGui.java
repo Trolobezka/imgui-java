@@ -362,29 +362,6 @@ public class ImGui {
         return flag;
     */
 
-    // Widgets: Value() Helpers.
-    // - Those are merely shortcut to calling Text() with a format string. Output single value in "name: value" format (tip: freely declare more in your code to handle your types. you can add functions to the ImGui namespace)
-
-    public static native void value(String prefix, boolean b); /*
-        ImGui::Value(prefix, b);
-    */
-
-    public static native void value(String prefix, int v); /*
-        ImGui::Value(prefix, (int)v);
-    */
-
-    public static native void value(String prefix, long v); /*
-        ImGui::Value(prefix, (unsigned int)v);
-    */
-
-    public static native void value(String prefix, float f); /*
-        ImGui::Value(prefix, f);
-    */
-
-    public static native void value(String prefix, float f, String floatFormat); /*
-        ImGui::Value(prefix, f, floatFormat);
-    */
-
     // Widgets: Menus
     // - Use BeginMenuBar() on a window ImGuiWindowFlags_MenuBar to append to its menu bar.
     // - Use BeginMainMenuBar() to create a menu bar at the top of the screen and append to it.
