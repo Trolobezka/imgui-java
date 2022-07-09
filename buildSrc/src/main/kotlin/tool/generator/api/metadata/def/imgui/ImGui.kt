@@ -963,5 +963,52 @@ class ImGui : ApiMetadata() {
             argString("tooltip")
             argNull()
         }
+
+        // Popups, Modals
+        method("BeginPopup", resultBoolean()) {
+            argString("strId")
+            argInt("flags", optional = true)
+        }
+        method("BeginPopupModal", resultBoolean()) {
+            argString("name")
+            argBooleanPtr("pOpen", optional = true, default = "NULL")
+            argInt("flags", optional = true)
+        }
+        method("EndPopup")
+
+        // Popups: open/close functions
+        method("OpenPopup") {
+            argString("strId")
+            argInt("popupFlags", optional = true)
+        }
+        method("OpenPopup") {
+            argInt("id")
+            argInt("popupFlags", optional = true)
+        }
+        method("OpenPopupOnItemClick") {
+            argString("strId", optional = true, default = "NULL")
+            argInt("popupFlags", optional = true)
+        }
+        method("CloseCurrentPopup")
+
+        // Popups: open+begin combined functions helpers
+        method("BeginPopupContextItem", resultBoolean()) {
+            argString("strId", optional = true, default = "NULL")
+            argInt("popupFlags", optional = true)
+        }
+        method("BeginPopupContextWindow", resultBoolean()) {
+            argString("strId", optional = true, default = "NULL")
+            argInt("popupFlags", optional = true)
+        }
+        method("BeginPopupContextVoid", resultBoolean()) {
+            argString("strId", optional = true, default = "NULL")
+            argInt("popupFlags", optional = true)
+        }
+
+        // Popups: query functions
+        method("IsPopupOpen", resultBoolean()) {
+            argString("strId")
+            argInt("flags", optional = true)
+        }
     }
 }
