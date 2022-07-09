@@ -882,5 +882,12 @@ class ImGui : ApiMetadata() {
             argInt("flags", default = "ImGuiSelectableFlags_None")
             argImVec2("size", optional = true)
         }
+
+        // Widgets: List Boxes
+        method("BeginListBox", resultBoolean()) {
+            argString("label")
+            argImVec2("size", optional = true)
+        }
+        method("EndListBox")
     }
 }
