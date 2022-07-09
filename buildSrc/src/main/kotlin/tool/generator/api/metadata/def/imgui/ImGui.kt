@@ -835,7 +835,7 @@ class ImGui : ApiMetadata() {
         method("ColorButton", resultBoolean()) {
             argString("descId")
             argImVec4("col")
-            argInt("flags", default = "ImGuiColorEditFlags_None")
+            argInt("flags", optional = true, default = "ImGuiColorEditFlags_None")
             argImVec2("size", optional = true)
         }
         method("SetColorEditOptions") {
@@ -872,14 +872,14 @@ class ImGui : ApiMetadata() {
         // Widgets: Selectables
         method("Selectable", resultBoolean()) {
             argString("label")
-            argBoolean("selected", default = "false")
-            argInt("flags", default = "ImGuiSelectableFlags_None")
+            argBoolean("selected", optional = true, default = "false")
+            argInt("flags", optional = true, default = "ImGuiSelectableFlags_None")
             argImVec2("size", optional = true)
         }
         method("Selectable", resultBoolean()) {
             argString("label")
             argBooleanPtr("selected")
-            argInt("flags", default = "ImGuiSelectableFlags_None")
+            argInt("flags", optional = true, default = "ImGuiSelectableFlags_None")
             argImVec2("size", optional = true)
         }
 
@@ -895,11 +895,11 @@ class ImGui : ApiMetadata() {
             argString("label")
             argFloatArr("values")
             argInt("valuesCount")
-            argInt("valuesOffset", default = "0")
-            argString("overlayText", default = "NULL")
+            argInt("valuesOffset", optional = true, default = "0")
+            argString("overlayText", optional = true, default = "NULL")
             argFloat("scaleMin", optional = true)
             argFloat("scaleMax", optional = true)
-            argImVec2("graphSize", default = "ImVec2(0, 0)")
+            argImVec2("graphSize", optional = true, default = "ImVec2(0, 0)")
             argInt("stride", optional = true)
         }
         method("PlotHistogram") {
@@ -931,6 +931,29 @@ class ImGui : ApiMetadata() {
             argString("prefix")
             argPrefix(argFloatRaw("value"), "(float)")
             argString("floatFormat", optional = true)
+        }
+
+        // Widgets: Menus
+        method("BeginMenuBar", resultBoolean())
+        method("EndMenuBar")
+        method("BeginMainMenuBar", resultBoolean())
+        method("EndMainMenuBar")
+        method("BeginMenu", resultBoolean()) {
+            argString("label")
+            argBoolean("enabled", optional = true)
+        }
+        method("EndMenu")
+        method("MenuItem", resultBoolean()) {
+            argString("label")
+            argString("shortcut", optional = true, default = "NULL")
+            argBoolean("selected", optional = true)
+            argBoolean("enabled", optional = true)
+        }
+        method("MenuItem", resultBoolean()) {
+            argString("label")
+            argString("shortcut", optional = true, default = "NULL")
+            argBooleanPtr("selected")
+            argBoolean("enabled", optional = true)
         }
     }
 }
