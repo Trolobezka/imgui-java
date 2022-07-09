@@ -16,34 +16,82 @@ class ApiMethodDef(
         args += ApiArgNull()
     }
 
+    fun argDefault(default: String) {
+        args += ApiArgDefault(default)
+    }
+
+    fun argCast(arg: ApiArg, cast: String) {
+        args += object : ApiArg(arg.typeJava, arg.typeNative, arg.name, arg.optional, arg.default) {
+            override fun inBodyNative() = "$cast${arg.name}"
+        }
+    }
+
     fun argString(name: String, optional: Boolean = false, default: String? = null) {
         args += ApiArg("String", "String", name, optional, default)
-    }
-
-    fun argInt(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArg("int", "int", name, optional, default)
-    }
-
-    fun argIntCast(name: String, cast: String, optional: Boolean = false, default: String? = null) {
-        args += object : ApiArg("int", "int", name, optional, default) {
-            override fun inBodyNative() = "$cast$name"
-        }
     }
 
     fun argBoolean(name: String, optional: Boolean = false, default: String? = null) {
         args += ApiArg("boolean", "boolean", name, optional, default)
     }
 
-    fun argFloat(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArg("float", "float", name, optional, default)
+    fun argBooleanPtr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgPrimitivePtr("imgui.type.ImBoolean", "boolean", name, optional, default)
     }
 
-    fun argBooleanPtr(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArgPrimitivePtr("ImBoolean", "boolean", name, optional, default)
+    fun argShort(name: String, optional: Boolean = false, default: String? = null) {
+        args += argShortRaw(name, optional, default)
+    }
+
+    fun argShortRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("short", "short", name, optional, default)
+    }
+
+    fun argShortPtr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgPrimitivePtr("imgui.type.ImShort", "short", name, optional, default)
+    }
+
+    fun argInt(name: String, optional: Boolean = false, default: String? = null) {
+        args += argIntRaw(name, optional, default)
+    }
+
+    fun argIntRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("int", "int", name, optional, default)
     }
 
     fun argIntPtr(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArgPrimitivePtr("ImInt", "int", name, optional, default)
+        args += ApiArgPrimitivePtr("imgui.type.ImInt", "int", name, optional, default)
+    }
+
+    fun argIntArr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgArray("int", "int", name, optional, default)
+    }
+
+    fun argFloat(name: String, optional: Boolean = false, default: String? = null) {
+        args += argFloatRaw(name, optional, default)
+    }
+
+    fun argFloatRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("float", "float", name, optional, default)
+    }
+
+    fun argFloatPtr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgPrimitivePtr("imgui.type.ImFloat", "float", name, optional, default)
+    }
+
+    fun argFloatArr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgArray("float", "float", name, optional, default)
+    }
+
+    fun argLong(name: String, optional: Boolean = false, default: String? = null) {
+        args += argLongRaw(name, optional, default)
+    }
+
+    fun argLongRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("long", "long", name, optional, default)
+    }
+
+    fun argLongPtr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgPrimitivePtr("imgui.type.ImLong", "long", name, optional, default)
     }
 
     fun argImVec2(name: String, optional: Boolean = false, default: String? = null) {

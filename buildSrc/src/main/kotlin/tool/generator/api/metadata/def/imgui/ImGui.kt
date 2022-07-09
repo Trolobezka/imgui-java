@@ -9,10 +9,10 @@ class ImGui : ApiMetadata() {
 
         // Context creation and access
         method("CreateContext", resultStruct("imgui.internal.ImGuiContext")) {
-            argStruct("imgui.ImFontAtlas", "sharedFontAtlas", true)
+            argStruct("imgui.ImFontAtlas", "sharedFontAtlas", optional = true)
         }
         method("DestroyContext") {
-            argStruct("imgui.internal.ImGuiContext", "ctx", true)
+            argStruct("imgui.internal.ImGuiContext", "ctx", optional = true)
         }
         method("GetCurrentContext", resultStruct("imgui.internal.ImGuiContext", static = true))
         method("SetCurrentContext") {
@@ -28,48 +28,48 @@ class ImGui : ApiMetadata() {
         method("GetDrawData", resultStruct("imgui.ImDrawData", static = true))
 
         // Demo, Debug, Information
-        method("ShowDemoWindow") { argBooleanPtr("open", true) }
-        method("ShowMetricsWindow") { argBooleanPtr("open", true) }
-        method("ShowStackToolWindow") { argBooleanPtr("open", true) }
-        method("ShowStyleEditor") { argStruct("imgui.ImGuiStyle", "ref", true) }
+        method("ShowDemoWindow") { argBooleanPtr("open", optional = true) }
+        method("ShowMetricsWindow") { argBooleanPtr("open", optional = true) }
+        method("ShowStackToolWindow") { argBooleanPtr("open", optional = true) }
+        method("ShowStyleEditor") { argStruct("imgui.ImGuiStyle", "ref", optional = true) }
         method("ShowStyleSelector", resultBoolean()) { argString("label") }
         method("ShowFontSelector") { argString("label") }
         method("ShowUserGuide")
         method("GetVersion", resultString())
 
         // Styles
-        method("StyleColorsDark") { argStruct("imgui.ImGuiStyle", "dst", true) }
-        method("StyleColorsLight") { argStruct("imgui.ImGuiStyle", "dst", true) }
-        method("StyleColorsClassic") { argStruct("imgui.ImGuiStyle", "dst", true) }
+        method("StyleColorsDark") { argStruct("imgui.ImGuiStyle", "dst", optional = true) }
+        method("StyleColorsLight") { argStruct("imgui.ImGuiStyle", "dst", optional = true) }
+        method("StyleColorsClassic") { argStruct("imgui.ImGuiStyle", "dst", optional = true) }
 
         // Windows
         method("Begin", resultBoolean()) {
             argString("name")
-            argBooleanPtr("pOpen", true, "NULL")
-            argInt("flags", true)
+            argBooleanPtr("pOpen", optional = true, default = "NULL")
+            argInt("flags", optional = true)
         }
         method("End")
 
         // Child Windows
         method("BeginChild", resultBoolean()) {
             argString("strId")
-            argImVec2("size", true, "ImVec2(0, 0)")
-            argBoolean("border", true, "false")
-            argInt("flags", true)
+            argImVec2("size", optional = true, default = "ImVec2(0, 0)")
+            argBoolean("border", optional = true, default = "false")
+            argInt("flags", optional = true)
         }
         method("BeginChild", resultBoolean()) {
             argInt("id")
-            argImVec2("size", true)
-            argBoolean("border", true)
-            argInt("flags", true)
+            argImVec2("size", optional = true)
+            argBoolean("border", optional = true)
+            argInt("flags", optional = true)
         }
         method("EndChild")
 
         // Windows Utilities
         method("IsWindowAppearing", resultBoolean())
         method("IsWindowCollapsed", resultBoolean())
-        method("IsWindowFocused", resultBoolean()) { argInt("flags", true) }
-        method("IsWindowHovered", resultBoolean()) { argInt("flags", true) }
+        method("IsWindowFocused", resultBoolean()) { argInt("flags", optional = true) }
+        method("IsWindowHovered", resultBoolean()) { argInt("flags", optional = true) }
         method("GetWindowDrawList", resultStruct("imgui.ImDrawList"))
         method("GetWindowDpiScale", resultFloat())
         method("GetWindowPos", resultImVec2())
@@ -81,12 +81,12 @@ class ImGui : ApiMetadata() {
         // Window manipulation
         method("SetNextWindowPos") {
             argImVec2("pos")
-            argInt("cond", true)
-            argImVec2("pivot", true)
+            argInt("cond", optional = true)
+            argImVec2("pivot", optional = true)
         }
         method("SetNextWindowSize") {
             argImVec2("size")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetNextWindowSizeConstraints") {
             argImVec2("sizeMin")
@@ -95,18 +95,18 @@ class ImGui : ApiMetadata() {
         method("SetNextWindowContentSize") { argImVec2("size") }
         method("SetNextWindowCollapsed") {
             argBoolean("collapsed")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetNextWindowFocus")
         method("SetNextWindowBgAlpha") { argFloat("alpha") }
         method("SetNextWindowViewport") { argInt("viewportId") }
         method("SetWindowPos") {
             argImVec2("pos")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetWindowSize") {
             argImVec2("size")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetWindowCollapsed") {
             argBoolean("collapsed")
@@ -122,12 +122,12 @@ class ImGui : ApiMetadata() {
         method("SetWindowPos") {
             argString("name")
             argImVec2("pos")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetWindowSize") {
             argString("name")
             argImVec2("size")
-            argInt("cond", true)
+            argInt("cond", optional = true)
         }
         method("SetWindowFocus") {
             argString("name")
@@ -146,15 +146,15 @@ class ImGui : ApiMetadata() {
         method("SetScrollY") { argFloat("scrollY") }
         method("GetScrollMaxX", resultFloat())
         method("GetScrollMaxY", resultFloat())
-        method("SetScrollHereX") { argFloat("centerRatioX", true) }
-        method("SetScrollHereY") { argFloat("centerRatioY", true) }
+        method("SetScrollHereX") { argFloat("centerRatioX", optional = true) }
+        method("SetScrollHereY") { argFloat("centerRatioY", optional = true) }
         method("SetScrollFromPosX") {
             argFloat("localX")
-            argFloat("centerRatioX", true)
+            argFloat("centerRatioX", optional = true)
         }
         method("SetScrollFromPosY") {
             argFloat("localY")
-            argFloat("centerRatioY", true)
+            argFloat("centerRatioY", optional = true)
         }
 
         // Parameters stacks (shared)
@@ -168,7 +168,7 @@ class ImGui : ApiMetadata() {
             argInt("idx")
             argImVec4("col")
         }
-        method("PopStyleColor") { argInt("count", true) }
+        method("PopStyleColor") { argInt("count", optional = true) }
         method("PushStyleVar") {
             argInt("idx")
             argInt("col")
@@ -177,7 +177,7 @@ class ImGui : ApiMetadata() {
             argInt("idx")
             argImVec2("val")
         }
-        method("PopStyleVar") { argInt("count", true) }
+        method("PopStyleVar") { argInt("count", optional = true) }
         method("PushAllowKeyboardFocus") { argBoolean("allowKeyboardFocus") }
         method("PopAllowKeyboardFocus")
         method("PushButtonRepeat") { argBoolean("repeat") }
@@ -188,7 +188,7 @@ class ImGui : ApiMetadata() {
         method("PopItemWidth")
         method("SetNextItemWidth") { argFloat("itemWidth") }
         method("CalcItemWidth", resultFloat())
-        method("PushTextWrapPos") { argFloat("wrapLocalPosX", true) }
+        method("PushTextWrapPos") { argFloat("wrapLocalPosX", optional = true) }
         method("PopTextWrapPos")
 
         // Style read access
@@ -278,7 +278,7 @@ class ImGui : ApiMetadata() {
             argInt("dir")
         }
         method("Image") {
-            argIntCast("userTextureId", "(ImTextureID)(intptr_t)")
+            argCast(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
             argImVec2("size")
             argImVec2("uv0", optional = true)
             argImVec2("uv1", optional = true)
@@ -286,7 +286,7 @@ class ImGui : ApiMetadata() {
             argImVec4("borderCol", optional = true)
         }
         method("ImageButton", resultBoolean()) {
-            argIntCast("userTextureId", "(ImTextureID)(intptr_t)")
+            argCast(argIntRaw("userTextureId"), "(ImTextureID)(intptr_t)")
             argImVec2("size")
             argImVec2("uv0", optional = true)
             argImVec2("uv1", optional = true)
@@ -331,6 +331,142 @@ class ImGui : ApiMetadata() {
             argIntPtr("currentItem")
             argString("itemsSeparatedByZeros")
             argInt("popupMaxHeightInItems", optional = true)
+        }
+
+        // Widgets: Drag Sliders
+        method("DragFloat", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("DragFloat2", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("DragFloat3", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("DragFloat4", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("DragFloatRange2", resultBoolean()) {
+            argString("label")
+            argFloatArr("vCurrentMin")
+            argFloatArr("vCurrentMax")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true)
+            argString("formatMax", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragInt", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("DragInt2", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("DragInt3", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("DragInt4", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("DragIntRange2", resultBoolean()) {
+            argString("label")
+            argIntArr("vCurrentMin")
+            argIntArr("vCurrentMax")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true)
+            argString("formatMax", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_Float")
+            argFloatPtr("pData")
+            argFloat("vSpeed", optional = true)
+            argCast(argFloatRaw("pMin", optional = true), "&")
+            argCast(argFloatRaw("pMax", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S16")
+            argShortPtr("pData")
+            argFloat("vSpeed", optional = true)
+            argCast(argShortRaw("pMin", optional = true), "&")
+            argCast(argShortRaw("pMax", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S32")
+            argIntPtr("pData")
+            argFloat("vSpeed", optional = true)
+            argCast(argIntRaw("pMin", optional = true), "&")
+            argCast(argIntRaw("pMax", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S64")
+            argLongPtr("pData")
+            argFloat("vSpeed", optional = true)
+            argCast(argLongRaw("pMin", optional = true), "&")
+            argCast(argLongRaw("pMax", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
         }
     }
 }

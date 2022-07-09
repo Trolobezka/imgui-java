@@ -18,11 +18,11 @@ open class ApiArg(
  * When rendered, such args only represent the native in-body side of the method.
  * They are ignored in signatures of all types.
  */
-open class ApiArgDefault(default: String?) : ApiArg("", "", "", false, default) {
-    override fun inBodyNative() = default!!
+open class ApiArgDefault(val value: String) : ApiArg("", "", "", false, null) {
+    override fun inBodyNative() = value
 }
 
-class ApiArgNull : ApiArgDefault(null)  {
+class ApiArgNull : ApiArgDefault("") {
     override fun inBodyNative() = "NULL"
 }
 
@@ -40,7 +40,21 @@ class ApiArgPrimitivePtr(
     override fun inBodyNative(): String = "&$name[0]"
 }
 
-// Structs are converted into the native pointer which is represented as a "long" type.
+class ApiArgArray(
+    typeJava: String,
+    typeNative: String,
+    name: String,
+    optional: Boolean,
+    default: String?
+) : ApiArg(typeJava, typeNative, name, optional, default) {
+    override fun inSignatureJava(): String = "final $typeJava[] $name"
+    override fun inSignatureNative(): String = "$typeNative[] $name"
+    override fun inBodyNative(): String = "&$name[0]"
+}
+
+/**
+ * Structs are converted into the native pointer which is represented as a "long" type.
+ */
 class ApiArgStruct(
     typeJava: String,
     name: String,
