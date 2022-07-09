@@ -468,5 +468,173 @@ class ImGui : ApiMetadata() {
             argString("format", optional = true)
             argInt("flags", optional = true)
         }
+
+        // Widgets: Regular Sliders
+        method("SliderFloat", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderFloat2", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderFloat3", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderFloat4", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderAngle", resultBoolean()) {
+            argString("label")
+            argFloatPtr("vRad")
+            argFloat("vDegreesMin")
+            argFloat("vDegreesMax")
+            argString("format", optional = true, default = "\"%.0f deg\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderInt", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderInt2", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderInt3", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderInt4", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_Float")
+            argFloatPtr("pData")
+            argCast(argFloatRaw("pMin"), "&")
+            argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("SliderScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S16")
+            argShortPtr("pData")
+            argCast(argShortRaw("pMin"), "&")
+            argCast(argShortRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("SliderScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S32")
+            argIntPtr("pData")
+            argCast(argIntRaw("pMin"), "&")
+            argCast(argIntRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("SliderScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S64")
+            argLongPtr("pData")
+            argCast(argLongRaw("pMin"), "&")
+            argCast(argLongRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("VSliderFloat", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argFloatPtr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("VSliderInt", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argIntPtr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("VSliderScalar", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argDefault("ImGuiDataType_Float")
+            argFloatPtr("pData")
+            argCast(argFloatRaw("pMin"), "&")
+            argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("VSliderScalar", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argDefault("ImGuiDataType_S16")
+            argShortPtr("pData")
+            argCast(argFloatRaw("pMin"), "&")
+            argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("VSliderScalar", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argDefault("ImGuiDataType_S32")
+            argIntPtr("pData")
+            argCast(argFloatRaw("pMin"), "&")
+            argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("VSliderScalar", resultBoolean()) {
+            argString("label")
+            argImVec2("size")
+            argDefault("ImGuiDataType_S64")
+            argLongPtr("pData")
+            argCast(argFloatRaw("pMin"), "&")
+            argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
     }
 }
