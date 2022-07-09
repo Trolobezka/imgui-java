@@ -336,6 +336,15 @@ class ImGui : ApiMetadata() {
         // Widgets: Drag Sliders
         method("DragFloat", resultBoolean()) {
             argString("label")
+            argFloatPtr("value")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("DragFloat", resultBoolean()) {
+            argString("label")
             argFloatArr("value")
             argFloat("vSpeed", optional = true)
             argFloat("vMin", optional = true)
@@ -372,6 +381,17 @@ class ImGui : ApiMetadata() {
         }
         method("DragFloatRange2", resultBoolean()) {
             argString("label")
+            argFloatPtr("vCurrentMin")
+            argFloatPtr("vCurrentMax")
+            argFloat("vSpeed", optional = true)
+            argFloat("vMin", optional = true)
+            argFloat("vMax", optional = true)
+            argString("format", optional = true)
+            argString("formatMax", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragFloatRange2", resultBoolean()) {
+            argString("label")
             argFloatArr("vCurrentMin")
             argFloatArr("vCurrentMax")
             argFloat("vSpeed", optional = true)
@@ -379,6 +399,15 @@ class ImGui : ApiMetadata() {
             argFloat("vMax", optional = true)
             argString("format", optional = true)
             argString("formatMax", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("DragInt", resultBoolean()) {
+            argString("label")
+            argIntPtr("value")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true, default = "\"%d\"")
             argInt("flags", optional = true)
         }
         method("DragInt", resultBoolean()) {
@@ -415,6 +444,17 @@ class ImGui : ApiMetadata() {
             argInt("vMin", optional = true)
             argInt("vMax", optional = true)
             argString("format", optional = true, default = "\"%d\"")
+            argInt("flags", optional = true)
+        }
+        method("DragIntRange2", resultBoolean()) {
+            argString("label")
+            argIntPtr("vCurrentMin")
+            argIntPtr("vCurrentMax")
+            argFloat("vSpeed", optional = true)
+            argInt("vMin", optional = true)
+            argInt("vMax", optional = true)
+            argString("format", optional = true)
+            argString("formatMax", optional = true)
             argInt("flags", optional = true)
         }
         method("DragIntRange2", resultBoolean()) {
@@ -472,6 +512,14 @@ class ImGui : ApiMetadata() {
         // Widgets: Regular Sliders
         method("SliderFloat", resultBoolean()) {
             argString("label")
+            argFloatPtr("value")
+            argFloat("vMin")
+            argFloat("vMax")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderFloat", resultBoolean()) {
+            argString("label")
             argFloatArr("value")
             argFloat("vMin")
             argFloat("vMax")
@@ -508,6 +556,14 @@ class ImGui : ApiMetadata() {
             argFloat("vDegreesMin")
             argFloat("vDegreesMax")
             argString("format", optional = true, default = "\"%.0f deg\"")
+            argInt("flags", optional = true)
+        }
+        method("SliderInt", resultBoolean()) {
+            argString("label")
+            argIntPtr("value")
+            argInt("vMin")
+            argInt("vMax")
+            argString("format", optional = true, default = "\"%d\"")
             argInt("flags", optional = true)
         }
         method("SliderInt", resultBoolean()) {
@@ -633,6 +689,123 @@ class ImGui : ApiMetadata() {
             argLongPtr("pData")
             argCast(argFloatRaw("pMin"), "&")
             argCast(argFloatRaw("pMax"), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+
+        // Widgets: Input with Keyboard
+        method("InputFloat", resultBoolean()) {
+            argString("label")
+            argFloatPtr("value")
+            argFloat("step", optional = true)
+            argFloat("stepFast", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputFloat", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argFloat("step", optional = true)
+            argFloat("stepFast", optional = true)
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputFloat2", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputFloat3", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputFloat4", resultBoolean()) {
+            argString("label")
+            argFloatArr("value")
+            argString("format", optional = true, default = "\"%.3f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputInt", resultBoolean()) {
+            argString("label")
+            argIntPtr("value")
+            argInt("step", optional = true)
+            argInt("stepFast", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("InputInt", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("step", optional = true)
+            argInt("stepFast", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("InputInt2", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("flags", optional = true)
+        }
+        method("InputInt3", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("flags", optional = true)
+        }
+        method("InputInt4", resultBoolean()) {
+            argString("label")
+            argIntArr("value")
+            argInt("flags", optional = true)
+        }
+        method("InputDouble", resultBoolean()) {
+            argString("label")
+            argDoublePtr("value")
+            argDouble("step")
+            argDouble("stepFast")
+            argString("format", optional = true, default = "\"%.6f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputDouble", resultBoolean()) {
+            argString("label")
+            argDoubleArr("value")
+            argDouble("step")
+            argDouble("stepFast")
+            argString("format", optional = true, default = "\"%.6f\"")
+            argInt("flags", optional = true)
+        }
+        method("InputScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_Float")
+            argFloatPtr("pData")
+            argCast(argFloatRaw("pStep", optional = true), "&")
+            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("InputScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S16")
+            argShortPtr("pData")
+            argCast(argFloatRaw("pStep", optional = true), "&")
+            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("InputScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S32")
+            argIntPtr("pData")
+            argCast(argFloatRaw("pStep", optional = true), "&")
+            argCast(argFloatRaw("pStepFast", optional = true), "&")
+            argString("format", optional = true)
+            argInt("flags", optional = true)
+        }
+        method("InputScalar", resultBoolean()) {
+            argString("label")
+            argDefault("ImGuiDataType_S64")
+            argLongPtr("pData")
+            argCast(argFloatRaw("pStep", optional = true), "&")
+            argCast(argFloatRaw("pStepFast", optional = true), "&")
             argString("format", optional = true)
             argInt("flags", optional = true)
         }

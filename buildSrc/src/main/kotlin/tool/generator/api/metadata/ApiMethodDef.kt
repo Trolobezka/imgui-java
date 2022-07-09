@@ -82,6 +82,21 @@ class ApiMethodDef(
         args += ApiArgArray("float", "float", name, optional, default)
     }
 
+    fun argDouble(name: String, optional: Boolean = false, default: String? = null) {
+        args += argDoubleRaw(name, optional, default)
+    }
+
+    fun argDoubleRaw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArg("double", "double", name, optional, default)
+    }
+
+    fun argDoublePtr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgPrimitivePtr("imgui.type.ImDouble", "double", name, optional, default)
+    }
+
+    fun argDoubleArr(name: String, optional: Boolean = false, default: String? = null) {
+        args += ApiArgArray("double", "double", name, optional, default)
+    }
     fun argLong(name: String, optional: Boolean = false, default: String? = null) {
         args += argLongRaw(name, optional, default)
     }

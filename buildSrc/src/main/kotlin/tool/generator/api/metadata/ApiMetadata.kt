@@ -9,7 +9,7 @@ abstract class ApiMetadata {
 
     var static: Boolean = false
 
-    private val methods = mutableListOf<String>()
+    private val methods = mutableSetOf<String>()
 
     fun method(name: String, result: ApiResult? = null, init: (ApiMethodDef.() -> Unit)? = null) {
         val methodDef = ApiMethodDef(receiver, name, static, result)
