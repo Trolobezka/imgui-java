@@ -868,5 +868,19 @@ class ImGui : ApiMetadata() {
             argBoolean("isOpen")
             argInt("cont", optional = true)
         }
+
+        // Widgets: Selectables
+        method("Selectable", resultBoolean()) {
+            argString("label")
+            argBoolean("selected", default = "false")
+            argInt("flags", default = "ImGuiSelectableFlags_None")
+            argImVec2("size", optional = true)
+        }
+        method("Selectable", resultBoolean()) {
+            argString("label")
+            argBooleanPtr("selected")
+            argInt("flags", default = "ImGuiSelectableFlags_None")
+            argImVec2("size", optional = true)
+        }
     }
 }

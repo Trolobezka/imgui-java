@@ -335,42 +335,6 @@ public class ImGui {
         return valueChanged;
     */
 
-    // Widgets: Selectables
-    // - A selectable highlights when hovered, and can display another color when selected.
-    // - Neighbors selectable extend their highlight bounds in order to leave no gap between them.
-
-    public static native boolean selectable(String label); /*
-        return ImGui::Selectable(label);
-    */
-
-    public static native boolean selectable(String label, boolean selected); /*
-        return ImGui::Selectable(label, selected);
-    */
-
-    public static native boolean selectable(String label, boolean selected, int imGuiSelectableFlags); /*
-        return ImGui::Selectable(label, selected, imGuiSelectableFlags);
-    */
-
-    public static native boolean selectable(String label, boolean selected, int imGuiSelectableFlags, float sizeX, float sizeY); /*
-        return ImGui::Selectable(label, selected, imGuiSelectableFlags, ImVec2(sizeX, sizeY));
-    */
-
-    public static boolean selectable(String label, ImBoolean selected) {
-        return nSelectable(label, selected.getData(), 0, 0, 0);
-    }
-
-    public static boolean selectable(String label, ImBoolean selected, int imGuiSelectableFlags) {
-        return nSelectable(label, selected.getData(), imGuiSelectableFlags, 0, 0);
-    }
-
-    public static boolean selectable(String label, ImBoolean selected, int imGuiSelectableFlags, float sizeX, float sizeY) {
-        return nSelectable(label, selected.getData(), imGuiSelectableFlags, sizeX, sizeY);
-    }
-
-    private static native boolean nSelectable(String label, boolean[] selected, int imGuiSelectableFlags, float sizeX, float sizeY); /*
-        return ImGui::Selectable(label,  &selected[0], imGuiSelectableFlags, ImVec2(sizeX, sizeY));
-    */
-
     // Widgets: List Boxes
     // - This is essentially a thin wrapper to using BeginChild/EndChild with some stylistic changes.
     // - The BeginListBox()/EndListBox() api allows you to manage your contents and selection state however you want it, by creating e.g. Selectable() or any items.
