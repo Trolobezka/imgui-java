@@ -851,7 +851,7 @@ class ImGui : ApiMetadata() {
             argInt("flags", optional = true)
         }
         method("TreePush") {
-            argString("strId", default = "NULL")
+            argString("strId")
         }
         method("TreePop")
         method("GetTreeNodeToLabelSpacing", resultFloat())
@@ -889,5 +889,29 @@ class ImGui : ApiMetadata() {
             argImVec2("size", optional = true)
         }
         method("EndListBox")
+
+        // Widgets: Data Plotting
+        method("PlotLines") {
+            argString("label")
+            argFloatArr("values")
+            argInt("valuesCount")
+            argInt("valuesOffset", default = "0")
+            argString("overlayText", default = "NULL")
+            argFloat("scaleMin", optional = true)
+            argFloat("scaleMax", optional = true)
+            argImVec2("graphSize", default = "ImVec2(0, 0)")
+            argInt("stride", optional = true)
+        }
+        method("PlotHistogram") {
+            argString("label")
+            argFloatArr("values")
+            argInt("valuesCount")
+            argInt("valuesOffset", default = "0")
+            argString("overlayText", default = "NULL")
+            argFloat("scaleMin", optional = true)
+            argFloat("scaleMax", optional = true)
+            argImVec2("graphSize", default = "ImVec2(0, 0)")
+            argInt("stride", optional = true)
+        }
     }
 }

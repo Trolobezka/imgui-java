@@ -362,65 +362,6 @@ public class ImGui {
         return flag;
     */
 
-    // Widgets: Data Plotting
-    // - Consider using ImPlot (https://github.com/epezent/implot)
-
-    public static native void plotLines(String label, float[] values, int valuesCount); /*
-        ImGui::PlotLines(label, &values[0], valuesCount);
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset);
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset, String overlayText); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset, overlayText);
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin);
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax);
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax, float graphWidth, float graphHeight); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, ImVec2(graphWidth, graphHeight));
-    */
-
-    public static native void plotLines(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax, float graphWidth, float graphHeight, int stride); /*
-        ImGui::PlotLines(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, ImVec2(graphWidth, graphHeight), stride);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset, String overlayText); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset, overlayText);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax);
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax, float graphWidth, float graphHeight); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, ImVec2(graphWidth, graphHeight));
-    */
-
-    public static native void plotHistogram(String label, float[] values, int valuesCount, int valuesOffset, String overlayText, float scaleMin, float scaleMax, float graphWidth, float graphHeight, int stride); /*
-        ImGui::PlotHistogram(label, &values[0], valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, ImVec2(graphWidth, graphHeight), stride);
-    */
-
     // Widgets: Value() Helpers.
     // - Those are merely shortcut to calling Text() with a format string. Output single value in "name: value" format (tip: freely declare more in your code to handle your types. you can add functions to the ImGui namespace)
 
