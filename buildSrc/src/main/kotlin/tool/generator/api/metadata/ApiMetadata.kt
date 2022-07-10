@@ -20,12 +20,17 @@ abstract class ApiMetadata {
     }
 
     fun resultBoolean() = ApiResultPrimitive("boolean")
+
     fun resultFloat() = ApiResultPrimitive("float")
+
     fun resultInt() = ApiResultPrimitive("int")
+
+    fun resultDouble() = ApiResultPrimitive("double")
 
     fun resultString() = ApiResultString()
 
     fun resultImVec2() = ApiResultImVec2()
+
     fun resultImVec4() = ApiResultImVec4()
 
     fun resultStruct(

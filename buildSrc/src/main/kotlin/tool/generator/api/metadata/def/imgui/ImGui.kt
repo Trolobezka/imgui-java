@@ -1205,5 +1205,38 @@ class ImGui : ApiMetadata() {
 
         // Viewports
         method("GetMainViewport", resultStruct("imgui.ImGuiViewport", static = true))
+
+        // Miscellaneous Utilities
+        method("IsRectVisible", resultBoolean()) {
+            argImVec2("size")
+        }
+        method("IsRectVisible", resultBoolean()) {
+            argImVec2("rectMin")
+            argImVec2("rectMax")
+        }
+        method("GetTime", resultDouble())
+        method("GetFrameCount", resultInt())
+        method("GetBackgroundDrawList", resultStruct("imgui.ImDrawList"))
+        method("GetForegroundDrawList", resultStruct("imgui.ImDrawList"))
+        method("GetBackgroundDrawList", resultStruct("imgui.ImDrawList")) {
+            argStruct("imgui.ImGuiViewport", "viewport")
+        }
+        method("GetForegroundDrawList", resultStruct("imgui.ImDrawList")) {
+            argStruct("imgui.ImGuiViewport", "viewport")
+        }
+        // TODO: GetDrawListSharedData
+        method("GetStyleColorName", resultString()) {
+            argInt("idx")
+        }
+        method("SetStateStorage") {
+            argStruct("imgui.ImGuiStorage", "storage")
+        }
+        method("GetStateStorage", resultStruct("imgui.ImGuiStorage"))
+        method("BeginChildFrame", resultBoolean()) {
+            argInt("id")
+            argImVec2("size")
+            argInt("flags", optional = true)
+        }
+        method("EndChildFrame")
     }
 }
