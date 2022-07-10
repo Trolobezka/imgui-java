@@ -512,17 +512,6 @@ public class ImGui {
         ImGui::ColorConvertHSVtoRGB(hsv[0], hsv[1], hsv[2], rgb[0], rgb[1], rgb[2]);
     */
 
-    // Clipboard Utilities
-    // - Also see the LogToClipboard() function to capture GUI into clipboard, or easily output text data to the clipboard.
-
-    public static native String getClipboardText(); /*
-        return env->NewStringUTF(ImGui::GetClipboardText());
-    */
-
-    public static native void setClipboardText(String text); /*
-        ImGui::SetClipboardText(text);
-    */
-
     // Settings/.Ini Utilities
     // - The disk functions are automatically called if io.IniFilename != NULL (default is "imgui.ini").
     // - Set io.IniFilename to NULL to load/save manually. Read io.WantSaveIniSettings description about handling .ini saving manually.

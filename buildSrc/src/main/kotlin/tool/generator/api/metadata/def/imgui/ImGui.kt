@@ -1340,5 +1340,11 @@ class ImGui : ApiMetadata() {
         method("CaptureMouseFromApp") {
             argBoolean("value", optional = true)
         }
+
+        // Clipboard Utilities
+        method("GetClipboardText", resultString())
+        method("SetClipboardText") {
+            argString("text")
+        }
     }
 }
