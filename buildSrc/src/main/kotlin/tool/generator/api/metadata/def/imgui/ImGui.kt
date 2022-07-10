@@ -1091,5 +1091,25 @@ class ImGui : ApiMetadata() {
             argFloat("offsetX")
         }
         method("GetColumnsCount", resultInt())
+
+        // Tab Bars, Tabs
+        method("BeginTabBar", resultBoolean()) {
+            argString("strId")
+            argInt("flags", optional = true)
+        }
+        method("EndTabBar")
+        method("BeginTabItem", resultBoolean()) {
+            argString("label")
+            argBooleanPtr("pOpen", optional = true, default = "NULL")
+            argInt("flags", optional = true)
+        }
+        method("EndTabItem")
+        method("TabItemButton", resultBoolean()) {
+            argString("label")
+            argInt("flags", optional = true)
+        }
+        method("SetTabItemClosed") {
+            argString("tabOrDockedWindowLabel")
+        }
     }
 }
