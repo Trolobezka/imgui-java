@@ -1111,5 +1111,27 @@ class ImGui : ApiMetadata() {
         method("SetTabItemClosed") {
             argString("tabOrDockedWindowLabel")
         }
+
+        // Docking
+        method("DockSpace", resultInt()) {
+            argInt("id")
+            argImVec2("size", optional = true, default = "ImVec2(0, 0)")
+            argInt("flags", optional = true, default = "ImGuiDockNodeFlags_None")
+            argStruct("imgui.ImGuiWindowClass", "windowClass", optional = true)
+        }
+        method("DockSpaceOverViewport", resultInt()) {
+            argStruct("imgui.ImGuiViewport", "viewport", optional = true, default = "NULL")
+            argInt("flags", optional = true, default = "ImGuiDockNodeFlags_None")
+            argStruct("imgui.ImGuiWindowClass", "windowClass", optional = true)
+        }
+        method("SetNextWindowDockID") {
+            argInt("dockId")
+            argInt("cond", optional = true)
+        }
+        method("SetNextWindowClass") {
+            argStruct("imgui.ImGuiWindowClass", "windowClass")
+        }
+        method("GetWindowDockID", resultInt())
+        method("IsWindowDocked", resultBoolean())
     }
 }
