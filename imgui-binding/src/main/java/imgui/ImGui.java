@@ -504,22 +504,6 @@ public class ImGui {
         return ImGui::GetDragDropPayload()->IsDataType(dataType);
     */
 
-    // Color Utilities
-
-    public final ImVec4 colorConvertU32ToFloat4(final int in) {
-        final ImVec4 value = new ImVec4();
-        colorConvertU32ToFloat4(in, value);
-        return value;
-    }
-
-    public static native void colorConvertU32ToFloat4(int in, ImVec4 dstImVec4); /*
-        Jni::ImVec4Cpy(env, ImGui::ColorConvertU32ToFloat4(in), dstImVec4);
-    */
-
-    public static native int colorConvertFloat4ToU32(float r, float g, float b, float a); /*
-        return ImGui::ColorConvertFloat4ToU32(ImVec4(r, g, b, a));
-    */
-
     public static native void colorConvertRGBtoHSV(float[] rgb, float[] hsv); /*
         ImGui::ColorConvertRGBtoHSV(rgb[0], rgb[1], rgb[2], hsv[0], hsv[1], hsv[2]);
     */

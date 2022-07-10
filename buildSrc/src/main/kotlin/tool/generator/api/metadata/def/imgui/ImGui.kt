@@ -1246,5 +1246,29 @@ class ImGui : ApiMetadata() {
             argBoolean("hideTextAfterDoubleHas", optional = true, default = "false")
             argFloat("wrapWidth", optional = true)
         }
+
+        // Color Utilities
+        method("ColorConvertU32ToFloat4", resultImVec4()) {
+            argInt("in")
+        }
+        method("ColorConvertFloat4ToU32", resultInt()) {
+            argImVec4("in")
+        }
+        method("ColorConvertRGBtoHSV") {
+            argFloat("r")
+            argFloat("g")
+            argFloat("b")
+            argFloatPtr("outH")
+            argFloatPtr("outS")
+            argFloatPtr("outV")
+        }
+        method("ColorConvertHSVtoRGB") {
+            argFloat("h")
+            argFloat("s")
+            argFloat("v")
+            argFloatPtr("outR")
+            argFloatPtr("outG")
+            argFloatPtr("outB")
+        }
     }
 }
