@@ -1151,5 +1151,13 @@ class ImGui : ApiMetadata() {
             argString("text")
             argNull()
         }
+
+        // Drag and Drop
+        method("BeginDragDropSource", resultBoolean()) {
+            argInt("flags", optional = true)
+        }
+        method("EndDragDropSource")
+        method("BeginDragDropTarget", resultBoolean())
+        method("EndDragDropTarget")
     }
 }

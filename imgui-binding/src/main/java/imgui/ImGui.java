@@ -362,32 +362,14 @@ public class ImGui {
         return flag;
     */
 
-    // Drag and Drop
-    // - If you stop calling BeginDragDropSource() the payload is preserved however it won't have a preview tooltip (we currently display a fallback "..." tooltip as replacement)
-
     private static WeakReference<Object> payloadRef = null;
     private static final byte[] PAYLOAD_PLACEHOLDER_DATA = new byte[1];
 
     /**
-     * Call when the current item is active. If this return true, you can call SetDragDropPayload() + EndDragDropSource()
-     */
-    public static native boolean beginDragDropSource(); /*
-        return ImGui::BeginDragDropSource();
-    */
-
-    /**
-     * Call when the current item is active. If this return true, you can call SetDragDropPayload() + EndDragDropSource()
-     */
-    public static native boolean beginDragDropSource(int imGuiDragDropFlags); /*
-        return ImGui::BeginDragDropSource(imGuiDragDropFlags);
-    */
-
-    /**
      * Type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types.
      * <p>
-     * BINDING NOTICE:
      * Method adopted for Java, so objects are used instead of raw bytes.
-     * Binding stores a reference to the object in a form of {@link WeakReference}.
+     * Binding stores a reference to the object in a form of a {@link WeakReference}.
      */
     public static boolean setDragDropPayload(final String dataType, final Object payload) {
         return setDragDropPayload(dataType, payload, ImGuiCond.None);
@@ -396,9 +378,8 @@ public class ImGui {
     /**
      * Type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types.
      * <p>
-     * BINDING NOTICE:
      * Method adopted for Java, so objects are used instead of raw bytes.
-     * Binding stores a reference to the object in a form of {@link WeakReference}.
+     * Binding stores a reference to the object in a form of a {@link WeakReference}.
      */
     public static boolean setDragDropPayload(final String dataType, final Object payload, final int imGuiCond) {
         if (payloadRef == null || payloadRef.get() != payload) {
@@ -423,20 +404,6 @@ public class ImGui {
 
     private static native boolean nSetDragDropPayload(String dataType, byte[] data, int sz, int imGuiCond); /*
         return ImGui::SetDragDropPayload(dataType, &data[0], sz, imGuiCond);
-    */
-
-    /**
-     * Only call EndDragDropSource() if BeginDragDropSource() returns true!
-     */
-    public static native void endDragDropSource(); /*
-        ImGui::EndDragDropSource();
-    */
-
-    /**
-     * Call after submitting an item that may receive a payload. If this returns true, you can call AcceptDragDropPayload() + EndDragDropTarget()
-     */
-    public static native boolean beginDragDropTarget(); /*
-        return ImGui::BeginDragDropTarget();
     */
 
     /**
@@ -492,13 +459,6 @@ public class ImGui {
 
     private static native boolean nAcceptDragDropPayload(String dataType, int imGuiDragDropFlags); /*
         return ImGui::AcceptDragDropPayload(dataType, imGuiDragDropFlags) != NULL;
-    */
-
-    /**
-     * Only call EndDragDropTarget() if BeginDragDropTarget() returns true!
-     */
-    public static native void endDragDropTarget(); /*
-        ImGui::EndDragDropTarget();
     */
 
     /**
