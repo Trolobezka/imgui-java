@@ -1179,5 +1179,28 @@ class ImGui : ApiMetadata() {
         method("SetKeyboardFocusHere") {
             argInt("offset", optional = true)
         }
+
+        // Item/Widgets Utilities and Query Functions
+        method("IsItemHovered", resultBoolean()) {
+            argInt("flags", optional = true)
+        }
+        method("IsItemActive", resultBoolean())
+        method("IsItemFocused", resultBoolean())
+        method("IsItemClicked", resultBoolean()) {
+            argInt("mouseButton", optional = true)
+        }
+        method("IsItemVisible", resultBoolean())
+        method("IsItemEdited", resultBoolean())
+        method("IsItemActivated", resultBoolean())
+        method("IsItemDeactivated", resultBoolean())
+        method("IsItemDeactivatedAfterEdit", resultBoolean())
+        method("IsItemToggledOpen", resultBoolean())
+        method("IsAnyItemHovered", resultBoolean())
+        method("IsAnyItemActive", resultBoolean())
+        method("IsAnyItemFocused", resultBoolean())
+        method("GetItemRectMin", resultImVec2())
+        method("GetItemRectMax", resultImVec2())
+        method("GetItemRectSize", resultImVec2())
+        method("SetItemAllowOverlap")
     }
 }
