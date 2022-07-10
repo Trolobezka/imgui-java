@@ -1372,5 +1372,17 @@ class ImGui : ApiMetadata() {
             argInt("szDrawVert")
             argInt("szDrawIdx")
         }
+
+        // (Optional) Platform/OS interface for multi-viewport support
+        method("GetPlatformIO", resultStruct("imgui.ImGuiPlatformIO", static = true, isRef = true))
+        method("UpdatePlatformWindows")
+        method("RenderPlatformWindowsDefault")
+        method("DestroyPlatformWindows")
+        method("FindViewportByID", resultStruct("imgui.ImGuiViewport")) {
+            argInt("id")
+        }
+        method("FindViewportByPlatformHandle", resultStruct("imgui.ImGuiViewport")) {
+            argPrefix(argLongRaw("platformHandle"), "(void*)")
+        }
     }
 }
