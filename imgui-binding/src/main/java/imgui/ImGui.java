@@ -512,54 +512,6 @@ public class ImGui {
         ImGui::ColorConvertHSVtoRGB(hsv[0], hsv[1], hsv[2], rgb[0], rgb[1], rgb[2]);
     */
 
-    // Settings/.Ini Utilities
-    // - The disk functions are automatically called if io.IniFilename != NULL (default is "imgui.ini").
-    // - Set io.IniFilename to NULL to load/save manually. Read io.WantSaveIniSettings description about handling .ini saving manually.
-
-    /**
-     * Call after CreateContext() and before the first call to NewFrame(). NewFrame() automatically calls LoadIniSettingsFromDisk(io.IniFilename).
-     */
-    public static native void loadIniSettingsFromDisk(String iniFilename); /*
-        ImGui::LoadIniSettingsFromDisk(iniFilename);
-    */
-
-    /**
-     * Call after CreateContext() and before the first call to NewFrame() to provide .ini data from your own data source.
-     */
-    public static native void loadIniSettingsFromMemory(String iniData); /*
-        ImGui::LoadIniSettingsFromMemory(iniData);
-    */
-
-    /**
-     * Call after CreateContext() and before the first call to NewFrame() to provide .ini data from your own data source.
-     */
-    public static native void loadIniSettingsFromMemory(String iniData, int iniSize); /*
-        ImGui::LoadIniSettingsFromMemory(iniData, iniSize);
-    */
-
-    /**
-     * This is automatically called (if io.IniFilename is not empty) a few seconds after any modification that should be reflected in the .ini file (and also by DestroyContext).
-     */
-    public static native void saveIniSettingsToDisk(String iniFilename); /*
-        ImGui::SaveIniSettingsToDisk(iniFilename);
-    */
-
-    /**
-     * Return a zero-terminated string with the .ini data which you can save by your own mean.
-     * Call when io.WantSaveIniSettings is set, then save data by your own mean and clear io.WantSaveIniSettings.
-     */
-    public static native String saveIniSettingsToMemory(); /*
-        return env->NewStringUTF(ImGui::SaveIniSettingsToMemory());
-    */
-
-    /**
-     * Return a zero-terminated string with the .ini data which you can save by your own mean.
-     * Call when io.WantSaveIniSettings is set, then save data by your own mean and clear io.WantSaveIniSettings.
-     */
-    public static native String saveIniSettingsToMemory(long outIniSize); /*
-        return env->NewStringUTF(ImGui::SaveIniSettingsToMemory((size_t*)&outIniSize));
-    */
-
     // (Optional) Platform/OS interface for multi-viewport support
     // Read comments around the ImGuiPlatformIO structure for more details.
     // Note: You may use GetWindowViewport() to get the current viewport of the current window.

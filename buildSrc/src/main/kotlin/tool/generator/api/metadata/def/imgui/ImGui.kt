@@ -1346,5 +1346,20 @@ class ImGui : ApiMetadata() {
         method("SetClipboardText") {
             argString("text")
         }
+
+        // Settings/.Ini Utilities
+        method("LoadIniSettingsFromDisk") {
+            argString("iniFilename")
+        }
+        method("LoadIniSettingsFromMemory") {
+            argString("iniData")
+            argInt("iniSize", optional = true)
+        }
+        method("SaveIniSettingsToDisk") {
+            argString("iniFilename")
+        }
+        method("SaveIniSettingsToMemory") {
+            argPrefix(argIntRaw("outIniSize", optional = true), "(size_t*)&")
+        }
     }
 }
