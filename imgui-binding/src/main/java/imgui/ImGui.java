@@ -504,23 +504,6 @@ public class ImGui {
         return ImGui::GetDragDropPayload()->IsDataType(dataType);
     */
 
-    // Viewports
-    // - Currently represents the Platform Window created by the application which is hosting our Dear ImGui windows.
-    // - In 'docking' branch with multi-viewport enabled, we extend this concept to have multiple active viewports.
-    // - In the future we will extend this concept further to also represent Platform Monitor and support a "no main platform window" operation mode.
-
-    /**
-     * Return primary/default viewport.
-     */
-    public static ImGuiViewport getMainViewport() {
-        MAIN_VIEWPORT.ptr = nGetMainViewport();
-        return MAIN_VIEWPORT;
-    }
-
-    private static native long nGetMainViewport(); /*
-        return (intptr_t)ImGui::GetMainViewport();
-    */
-
     // Miscellaneous Utilities
 
     /**

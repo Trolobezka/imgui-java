@@ -1202,5 +1202,8 @@ class ImGui : ApiMetadata() {
         method("GetItemRectMax", resultImVec2())
         method("GetItemRectSize", resultImVec2())
         method("SetItemAllowOverlap")
+
+        // Viewports
+        method("GetMainViewport", resultStruct("imgui.ImGuiViewport", static = true))
     }
 }

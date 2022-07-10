@@ -58,7 +58,7 @@ class ApiMethodFactory {
                 |${TAB}private static final ${methodDef.result.type} $staticFieldName = new ${methodDef.result.type}(0);
                 |$TAB$methodSign {
                 |$TAB$TAB${staticFieldName}.ptr = $methodCallNative;
-                |${TAB}return ${staticFieldName};
+                |$TAB${TAB}return ${staticFieldName};
                 |$TAB}
                 """.trimMargin()
             } else {
