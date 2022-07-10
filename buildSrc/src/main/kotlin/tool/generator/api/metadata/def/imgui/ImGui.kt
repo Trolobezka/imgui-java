@@ -1361,5 +1361,16 @@ class ImGui : ApiMetadata() {
         method("SaveIniSettingsToMemory") {
             argPrefix(argIntRaw("outIniSize", optional = true), "(size_t*)&")
         }
+
+        // Debug Utilities
+        method("DebugCheckVersionAndDataLayout", resultBoolean()) {
+            argString("versionStr")
+            argInt("szIO")
+            argInt("szStyle")
+            argInt("szVec2")
+            argInt("szVec4")
+            argInt("szDrawVert")
+            argInt("szDrawIdx")
+        }
     }
 }
