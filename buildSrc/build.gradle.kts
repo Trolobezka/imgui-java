@@ -7,9 +7,15 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
 kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
+    kotlinDslPluginOptions {
+        jvmTarget.set("1.8")
     }
 }
 

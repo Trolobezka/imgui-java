@@ -1010,5 +1010,62 @@ class ImGui : ApiMetadata() {
             argString("strId")
             argInt("flags", optional = true)
         }
+
+        // Tables
+        method("BeginTable", resultBoolean()) {
+            argString("strId")
+            argInt("column")
+            argInt("flags", optional = true, default = "ImGuiTableFlags_None")
+            argImVec2("outerSize", optional = true, default = "ImVec2(0, 0)")
+            argFloat("innerWidth", optional = true)
+        }
+        method("EndTable")
+        method("TableNextRow") {
+            argInt("rowFlags", optional = true, default = "ImGuiTableRowFlags_None")
+            argFloat("minRowHeight", optional = true)
+        }
+        method("TableNextColumn", resultBoolean())
+        method("TableSetColumnIndex", resultBoolean()) {
+            argInt("columnN")
+        }
+
+        // Tables: Headers & Columns declaration
+        method("TableSetupColumn") {
+            argString("label")
+            argInt("flags", optional = true, default = "ImGuiTableColumnFlags_None")
+            argFloat("initWidthOrWeight", optional = true, default = "0.0f")
+            argInt("userId", optional = true)
+        }
+        method("TableSetupScrollFreeze") {
+            argInt("cols")
+            argInt("rows")
+        }
+        method("TableHeadersRow")
+        method("TableHeader") {
+            argString("label")
+        }
+
+        // Tables: Sorting
+        // TODO: TableGetSortSpecs
+
+        // Tables: Miscellaneous functions
+        method("TableGetColumnCount", resultInt())
+        method("TableGetColumnIndex", resultInt())
+        method("TableGetRowIndex", resultInt())
+        method("TableGetColumnName", resultString()) {
+            argInt("columnN", optional = true)
+        }
+        method("TableGetColumnFlags", resultInt()) {
+            argInt("columnN", optional = true)
+        }
+        method("TableSetColumnEnabled") {
+            argInt("columnN")
+            argBoolean("value")
+        }
+        method("TableSetBgColor") {
+            argInt("target")
+            argInt("color")
+            argInt("columnN", optional = true)
+        }
     }
 }
