@@ -1159,5 +1159,11 @@ class ImGui : ApiMetadata() {
         method("EndDragDropSource")
         method("BeginDragDropTarget", resultBoolean())
         method("EndDragDropTarget")
+
+        // Disabling [BETA API]
+        method("BeginDisabled") {
+            argBoolean("disabled", optional = true)
+        }
+        method("EndDisabled")
     }
 }
