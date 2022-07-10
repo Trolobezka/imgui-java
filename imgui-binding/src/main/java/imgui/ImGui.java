@@ -503,45 +503,6 @@ public class ImGui {
     private static native boolean nHasDragDropPayload(String dataType); /*
         return ImGui::GetDragDropPayload()->IsDataType(dataType);
     */
-    // Text Utilities
-
-    public final ImVec2 calcTextSize(final String text) {
-        final ImVec2 value = new ImVec2();
-        calcTextSize(value, text);
-        return value;
-    }
-
-    public final ImVec2 calcTextSize(final String text, final boolean hideTextAfterDoubleHash) {
-        final ImVec2 value = new ImVec2();
-        calcTextSize(value, text, hideTextAfterDoubleHash);
-        return value;
-    }
-
-    public final ImVec2 calcTextSize(final String text, final boolean hideTextAfterDoubleHash, final float wrapWidth) {
-        final ImVec2 value = new ImVec2();
-        calcTextSize(value, text, hideTextAfterDoubleHash, wrapWidth);
-        return value;
-    }
-
-    public static native void calcTextSize(ImVec2 dstImVec2, String text); /*
-        ImVec2 src = ImGui::CalcTextSize(text);
-        Jni::ImVec2Cpy(env, src, dstImVec2);
-    */
-
-    public static native void calcTextSize(ImVec2 dstImVec2, String text, boolean hideTextAfterDoubleHash); /*
-        ImVec2 src = ImGui::CalcTextSize(text, NULL, hideTextAfterDoubleHash);
-        Jni::ImVec2Cpy(env, src, dstImVec2);
-    */
-
-    public static native void calcTextSize(ImVec2 dstImVec2, String text, float wrapWidth); /*
-        ImVec2 src = ImGui::CalcTextSize(text, NULL, false, wrapWidth);
-        Jni::ImVec2Cpy(env, src, dstImVec2);
-    */
-
-    public static native void calcTextSize(ImVec2 dstImVec2, String text, boolean hideTextAfterDoubleHash, float wrapWidth); /*
-        ImVec2 src = ImGui::CalcTextSize(text, NULL, hideTextAfterDoubleHash, wrapWidth);
-        Jni::ImVec2Cpy(env, src, dstImVec2);
-    */
 
     // Color Utilities
 

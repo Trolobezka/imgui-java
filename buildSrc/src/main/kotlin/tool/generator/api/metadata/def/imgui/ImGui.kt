@@ -1238,5 +1238,13 @@ class ImGui : ApiMetadata() {
             argInt("flags", optional = true)
         }
         method("EndChildFrame")
+
+        // Text Utilities
+        method("CalcTextSize", resultImVec2()) {
+            argString("text")
+            argString("textEnd", optional = true, default = "NULL")
+            argBoolean("hideTextAfterDoubleHas", optional = true, default = "false")
+            argFloat("wrapWidth", optional = true)
+        }
     }
 }
