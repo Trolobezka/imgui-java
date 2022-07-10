@@ -1293,5 +1293,52 @@ class ImGui : ApiMetadata() {
         method("CaptureKeyboardFromApp") {
             argBoolean("value", optional = true)
         }
+
+        // Inputs Utilities: Mouse
+        method("IsMouseDown", resultBoolean()) {
+            argInt("button")
+        }
+        method("IsMouseClicked", resultBoolean()) {
+            argInt("button")
+            argBoolean("repeat", optional = true)
+        }
+        method("IsMouseReleased", resultBoolean()) {
+            argInt("button")
+        }
+        method("IsMouseDoubleClicked", resultBoolean()) {
+            argInt("button")
+        }
+        method("GetMouseClickedCount", resultInt()) {
+            argInt("button")
+        }
+        method("IsMouseHoveringRect", resultBoolean()) {
+            argImVec2("rMin")
+            argImVec2("rMax")
+            argBoolean("clip", optional = true)
+        }
+        method("IsMousePosValid", resultBoolean()) {
+            argImVec2("mousePos", optional = true)
+        }
+        method("IsAnyMouseDown", resultBoolean())
+        method("GetMousePos", resultImVec2())
+        method("GetMousePosOnOpeningCurrentPopup", resultImVec2())
+        method("IsMouseDragging", resultBoolean()) {
+            argInt("button")
+            argFloat("lockThreshold", optional = true)
+        }
+        method("GetMouseDragDelta", resultImVec2()) {
+            argInt("button", optional = true, default = "ImGuiMouseButton_Left")
+            argFloat("lockThreshold", optional = true)
+        }
+        method("ResetMouseDragDelta") {
+            argInt("button", optional = true)
+        }
+        method("GetMouseCursor", resultInt())
+        method("SetMouseCursor") {
+            argInt("cursorType")
+        }
+        method("CaptureMouseFromApp") {
+            argBoolean("value", optional = true)
+        }
     }
 }
