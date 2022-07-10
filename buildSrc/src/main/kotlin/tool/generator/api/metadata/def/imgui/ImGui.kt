@@ -1165,5 +1165,13 @@ class ImGui : ApiMetadata() {
             argBoolean("disabled", optional = true)
         }
         method("EndDisabled")
+
+        // Clipping
+        method("PushClipRect") {
+            argImVec2("clipRectMin")
+            argImVec2("clipRectMax")
+            argBoolean("intersectWithCurrentClipRect")
+        }
+        method("PopClipRect")
     }
 }
