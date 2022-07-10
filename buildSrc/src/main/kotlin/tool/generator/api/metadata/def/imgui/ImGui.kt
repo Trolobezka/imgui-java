@@ -1270,5 +1270,28 @@ class ImGui : ApiMetadata() {
             argFloatPtr("outG")
             argFloatPtr("outB")
         }
+
+        // Inputs Utilities: Keyboard
+        method("GetKeyIndex", resultInt()) {
+            argInt("key")
+        }
+        method("IsKeyDown", resultBoolean()) {
+            argInt("userKeyIndex")
+        }
+        method("IsKeyPressed", resultBoolean()) {
+            argInt("userKeyIndex")
+            argBoolean("repeat", optional = true)
+        }
+        method("IsKeyReleased", resultBoolean()) {
+            argInt("userKeyIndex")
+        }
+        method("GetKeyPressedAmount", resultInt()) {
+            argInt("keyIndex")
+            argFloat("repeatDelay")
+            argFloat("rate")
+        }
+        method("CaptureKeyboardFromApp") {
+            argBoolean("value", optional = true)
+        }
     }
 }
