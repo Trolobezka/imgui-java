@@ -1067,5 +1067,29 @@ class ImGui : ApiMetadata() {
             argInt("color")
             argInt("columnN", optional = true)
         }
+
+        // Legacy Columns API (prefer using Tables!)
+        method("Columns") {
+            argInt("count", optional = true, default = "1")
+            argString("id", optional = true, default = "NULL")
+            argBoolean("border", optional = true)
+        }
+        method("NextColumn")
+        method("GetColumnIndex", resultInt())
+        method("GetColumnWidth", resultFloat()) {
+            argInt("columnIndex", optional = true)
+        }
+        method("SetColumnWidth") {
+            argInt("columnIndex")
+            argFloat("width")
+        }
+        method("GetColumnOffset", resultFloat()) {
+            argInt("columnIndex", optional = true)
+        }
+        method("SetColumnOffset") {
+            argInt("columnIndex")
+            argFloat("offsetX")
+        }
+        method("GetColumnsCount", resultInt())
     }
 }
