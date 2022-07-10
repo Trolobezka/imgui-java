@@ -220,7 +220,7 @@ class ApiMethodFactory {
                     }
 
                     val argsWithDefault = argGroup.args.toMutableList()
-                    argsWithDefault[idx] = ApiArgDefault(defaultValue)
+                    argsWithDefault[idx] = ApiArgDefaultValue(defaultValue)
                     argGroups.add(ArgGroup(argsWithDefault))
                 }
             }

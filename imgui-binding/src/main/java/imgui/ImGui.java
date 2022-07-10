@@ -4,7 +4,6 @@ import imgui.assertion.ImAssertCallback;
 import imgui.flag.ImGuiCond;
 import imgui.flag.ImGuiDragDropFlags;
 import imgui.flag.ImGuiInputTextFlags;
-import imgui.type.ImBoolean;
 import imgui.type.ImInt;
 import imgui.type.ImString;
 
@@ -23,14 +22,6 @@ public class ImGui {
     private static final String LIB_NAME_DEFAULT = System.getProperty("os.arch").contains("64") ? "imgui-java64" : "imgui-java";
     private static final String LIB_TMP_DIR_PREFIX = "imgui-java-natives_" + System.currentTimeMillis();
 
-    private static final ImDrawList BACKGROUND_DRAW_LIST;
-    private static final ImDrawList FOREGROUND_DRAW_LIST;
-    private static final ImGuiStorage IMGUI_STORAGE;
-    private static final ImGuiViewport FIND_VIEWPORT;
-
-    private static final ImGuiViewport MAIN_VIEWPORT;
-    private static final ImGuiPlatformIO PLATFORM_IO;
-
     static {
         final String libPath = System.getProperty(LIB_PATH_PROP);
         final String libName = System.getProperty(LIB_NAME_PROP, LIB_NAME_DEFAULT);
@@ -45,14 +36,6 @@ public class ImGui {
         } else {
             System.loadLibrary(libName);
         }
-
-        BACKGROUND_DRAW_LIST = new ImDrawList(0);
-        FOREGROUND_DRAW_LIST = new ImDrawList(0);
-        IMGUI_STORAGE = new ImGuiStorage(0);
-        FIND_VIEWPORT = new ImGuiViewport(0);
-
-        MAIN_VIEWPORT = new ImGuiViewport(0);
-        PLATFORM_IO = new ImGuiPlatformIO(0);
 
         nInitJni();
         ImFontAtlas.nInit();
@@ -510,6 +493,19 @@ public class ImGui {
 
     public static native void colorConvertHSVtoRGB(float[] hsv, float[] rgb); /*
         ImGui::ColorConvertHSVtoRGB(hsv[0], hsv[1], hsv[2], rgb[0], rgb[1], rgb[2]);
+    */
+
+    public static boolean isMousePosValid(final ImVec2 mousePos) {
+        return nIsMousePosValid(mousePos.x, mousePos.y);
+    }
+
+    public static boolean isMousePosValid(final float mousePosX, final float mousePosY) {
+        return nIsMousePosValid(mousePosX, mousePosY);
+    }
+
+    private static native boolean nIsMousePosValid(float mousePosX, float mousePosY); /*
+        ImVec2 pos = ImVec2(mousePosX, mousePosY);
+        return ImGui::IsMousePosValid(&pos);
     */
     // CUSTOM API: END
 }

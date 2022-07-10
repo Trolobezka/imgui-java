@@ -17,12 +17,12 @@ class ApiMethodDef(
     }
 
     fun argDefault(default: String) {
-        args += ApiArgDefault(default)
+        args += ApiArgDefaultValue(default)
     }
 
-    fun argPrefix(arg: ApiArg, prefix: String) {
-        args += object : ApiArg(arg.typeJava, arg.typeNative, arg.name, arg.optional, arg.default) {
-            override fun inBodyNative() = "$prefix${arg.name}"
+    fun argInBodyNativePrefix(arg: ApiArg, prefix: String) {
+        args += arg.apply {
+            inBodyNative = "$prefix$inBodyNative"
         }
     }
 
@@ -115,7 +115,11 @@ class ApiMethodDef(
     }
 
     fun argImVec2(name: String, optional: Boolean = false, default: String? = null) {
-        args += ApiArgImVec2(name, optional, default)
+        args += argImVec2Raw(name, optional, default)
+    }
+
+    fun argImVec2Raw(name: String, optional: Boolean = false, default: String? = null): ApiArg {
+        return ApiArgImVec2(name, optional, default)
     }
 
     fun argImVec4(name: String, optional: Boolean = false, default: String? = null) {
