@@ -1133,5 +1133,23 @@ class ImGui : ApiMetadata() {
         }
         method("GetWindowDockID", resultInt())
         method("IsWindowDocked", resultBoolean())
+
+        // Logging/Capture
+        method("LogToTTY") {
+            argInt("autoOpenDepth", optional = true)
+        }
+        method("LogToFile") {
+            argInt("autoOpenDepth", optional = true, default = "-1")
+            argString("filename", optional = true)
+        }
+        method("LogToClipboard") {
+            argInt("autoOpenDepth", optional = true)
+        }
+        method("LogFinish")
+        method("LogButtons")
+        method("LogText") {
+            argString("text")
+            argNull()
+        }
     }
 }
