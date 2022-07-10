@@ -1173,5 +1173,11 @@ class ImGui : ApiMetadata() {
             argBoolean("intersectWithCurrentClipRect")
         }
         method("PopClipRect")
+
+        // Focus, Activation
+        method("SetItemDefaultFocus")
+        method("SetKeyboardFocusHere") {
+            argInt("offset", optional = true)
+        }
     }
 }
