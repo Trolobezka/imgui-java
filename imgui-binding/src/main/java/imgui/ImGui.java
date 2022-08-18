@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class ImGui {
     private static final String LIB_PATH_PROP = "imgui.library.path";
     private static final String LIB_NAME_PROP = "imgui.library.name";
@@ -95,7 +96,7 @@ public class ImGui {
     /**
      * For internal usage.
      * Method is used to initiate static instantiation (loading of the native libraries etc.).
-     * Otherwise native libraries will be loaded on demand and natively mapped objects won't work.
+     * Otherwise, native libraries will be loaded on demand and natively mapped objects won't work.
      */
     public static void init() {
     }
@@ -164,10 +165,6 @@ public class ImGui {
 
         return flag;
     */
-
-    // Widgets: Input with Keyboard
-    // - If you want to use InputText() with std::string or any custom dynamic string type, see misc/cpp/imgui_stdlib.h and comments in imgui_demo.cpp.
-    // - Most of the ImGuiInputTextFlags flags are only useful for InputText() and not for InputFloatX, InputIntX, InputDouble etc.
 
     /*JNI
         jmethodID jImStringResizeInternalMID;
